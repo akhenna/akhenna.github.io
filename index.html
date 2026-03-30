@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
-    <title>Akhenna Siman Lachica | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Akhenna Siman Lachica</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
@@ -14,6 +15,7 @@
             background-color: #f9d7ff;
             font-family: 'Inter', sans-serif;
         }
+
         .glass-card {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
@@ -21,26 +23,46 @@
         }
 
         /* Responsive fixes for small screens */
-        body, .glass-card, .section, p, h1, h2, h3 {
-            word-break: break-word; /* break long text */
+        body,
+        .glass-card,
+        .section,
+        p,
+        h1,
+        h2,
+        h3 {
+            word-break: break-word;
+            /* break long text */
         }
 
         @media (max-width: 640px) {
-            h1, h2, h3 {
-                font-size: 1rem; /* headings smaller on mobile */
+
+            h1,
+            h2,
+            h3 {
+                font-size: 1rem;
+                /* headings smaller on mobile */
             }
+
             p {
-                font-size: 0.875rem; /* smaller paragraph text */
+                font-size: 0.875rem;
+                /* smaller paragraph text */
             }
+
             .glass-card {
-                padding: 1rem; /* reduce padding on mobile */
+                padding: 1rem;
+                /* reduce padding on mobile */
             }
+
             .nav-btn {
-                font-size: 0.875rem; /* smaller navbar buttons */
-                margin-bottom: 0.25rem; /* wrap spacing */
+                font-size: 0.875rem;
+                /* smaller navbar buttons */
+                margin-bottom: 0.25rem;
+                /* wrap spacing */
             }
+
             nav {
-                flex-wrap: wrap; /* navbar buttons wrap to next line */
+                flex-wrap: wrap;
+                /* navbar buttons wrap to next line */
             }
         }
     </style>
@@ -48,162 +70,181 @@
 
 <body class="p-4 md:p-10">
 
-<div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6">
 
-    <!-- Sidebar -->
-    <aside class="md:col-span-4 lg:col-span-3">
-        <div class="glass-card p-8 text-center shadow-lg md:sticky md:top-10">
-            <img src="https://i.pinimg.com/140x140_RS/37/31/ef/3731efbfe7637263c6f47a6a7c7d80ce.jpg" 
-                 class="w-32 h-32 rounded-3xl mx-auto mb-4 border-4 border-white shadow-sm">
+        <!-- Sidebar -->
+        <aside class="md:col-span-4 lg:col-span-3">
+            <div class="glass-card p-8 text-center shadow-lg md:sticky md:top-10">
+                <img src="https://i.pinimg.com/140x140_RS/37/31/ef/3731efbfe7637263c6f47a6a7c7d80ce.jpg"
+                    class="w-32 h-32 rounded-3xl mx-auto mb-4 border-4 border-white shadow-sm">
 
-            <h1 class="text-xl font-bold text-purple-800">Akhenna Siman Lachica</h1>
+                <h1 class="text-xl font-bold text-purple-800">Akhenna Siman Lachica</h1>
 
-            <p class="bg-gray-100 text-purple-600 text-xs py-1 px-3 rounded-full inline-block mt-2 uppercase tracking-widest font-semibold">
-                Student Athlete
-            </p>
-
-            <div class="mt-8 text-left space-y-8 text-sm">
-                <div>
-                    <p class="text-gray-400 uppercase text-[10px] font-bold">Email</p>
-                    <p class="text-gray-700">akhennalachica02@gmail.com</p>
-                </div>
-                <div>
-                    <p class="text-gray-400 uppercase text-[10px] font-bold">Phone</p>
-                    <p class="text-gray-700">Secret no clue</p>
-                </div>
-                <div>
-                    <p class="text-gray-400 uppercase text-[10px] font-bold">Location</p>
-                    <p class="text-gray-700">Calamba, Laguna</p>
-                </div>
-            </div>
-        </div>
-    </aside>
-
-    <!-- Main Content -->
-    <main class="md:col-span-8 lg:col-span-9 space-y-6">
-
-        <!-- Navbar -->
-        <nav class="glass-card p-4 shadow-sm flex justify-end space-x-6 text-sm font-medium text-gray-600">
-            <button onclick="showSection('about')" class="nav-btn text-purple-600">About</button>
-            <button onclick="showSection('cv')" class="nav-btn hover:text-purple-500">CV</button>
-            <button onclick="showSection('portfolio')" class="nav-btn hover:text-purple-500">Portfolio</button>
-            <button onclick="showSection('contact')" class="nav-btn hover:text-purple-500">Contact</button>
-        </nav>
-
-        <!-- About Section -->
-        <section id="about" class="section">
-            <div class="glass-card p-8 shadow-md space-y-6">
-                <h2 class="text-2xl font-bold text-purple-800 mb-4">About Me</h2>
-                <p class="text-gray-600 leading-relaxed mb-4">
-                    Hi! I'm a Student Athlete and an IT student balancing school and training. 
-                    It's challenging, but I stay committed both my studies and my sport. 
-                    Learning technology and problem-solving in IT, along with athletic journey, has taught me discipline, time management, and perseverance.
-                </p>
-                <p class="text-gray-600 leading-relaxed">
-                    Currently, I'm focusing on improving my skills in IT while keeping up with my training schedule. 
-                    I'm learning to manage my time better, take on new challenges, and grow both academically and athletically.
+                <p
+                    class="bg-gray-100 text-purple-600 text-xs py-1 px-3 rounded-full inline-block mt-2 uppercase tracking-widest font-semibold">
+                    Student Athlete
                 </p>
 
-                <h2 class="text-2xl font-bold text-purple-800 mb-4">Skills</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                    <div class="glass-card p-4 shadow-md h-36">
-                        <h3 class="text-lg font-bold text-gray-800 mb-1">Basic Programming</h3>
-                        <p class="text-sm text-gray-600">
-                            I understand the fundamentals of coding and can create simple programs.
-                            I’m continuously learning how to solve problems using code.
-                        </p>
+                <div class="mt-8 text-left space-y-8 text-sm">
+                    <div>
+                        <p class="text-gray-400 uppercase text-[10px] font-bold">Email</p>
+                        <p class="text-gray-700">akhennalachica02@gmail.com</p>
                     </div>
-
-                    <div class="glass-card p-4 shadow-md h-36">
-                        <h3 class="text-lg font-bold text-gray-800 mb-1">Basic Web Development</h3>
-                        <p class="text-sm text-gray-600">
-                            I can build simple and responsive websites using HTML and CSS,
-                            and I’m improving my skills in designing clean and user-friendly pages.
-                        </p>
+                    <div>
+                        <p class="text-gray-400 uppercase text-[10px] font-bold">Phone</p>
+                        <p class="text-gray-700">Secret no clue</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-400 uppercase text-[10px] font-bold">Location</p>
+                        <p class="text-gray-700">Calamba, Laguna</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </aside>
 
-        <!-- CV Section -->
-        <section id="cv" class="section hidden">
-            <div class="glass-card p-8 shadow-md space-y-6">
-                <h2 class="text-2xl font-bold text-purple-800 mb-4">Curriculum Vitae</h2>
+        <!-- Main Content -->
+        <main class="md:col-span-8 lg:col-span-9 space-y-6">
 
-                <h3 class="text-xl font-semibold text-purple-800 mb-2">Personal Profile</h3>
-                <div class="text-sm text-gray-700 space-y-2">
-                    <p><span class="font-bold">Date of Birth:</span> October 02, 2006</p>
-                    <p><span class="font-bold">Place of Birth:</span> Maunong, Calamba Laguna</p>
-                    <p><span class="font-bold">Citizenship:</span> Filipino</p>
-                    <p><span class="font-bold">Sex:</span> Female</p>
-                    <p><span class="font-bold">Age:</span> 19</p>
-                    <p><span class="font-bold">Civil Status:</span> Single</p>
-                    <p><span class="font-bold">Religion:</span> Roman Catholic</p>
-                    <p><span class="font-bold">Father’s Name:</span> Rolando A. Lachica</p>
-                    <p><span class="font-bold">Mother’s Name:</span> Lucita S. Lachica</p>
-                </div>
+            <!-- Navbar -->
+            <nav class="glass-card p-4 shadow-sm flex justify-end space-x-6 text-sm font-medium text-gray-600">
+                <button onclick="showSection('about')" class="nav-btn text-purple-600">About</button>
+                <button onclick="showSection('cv')" class="nav-btn hover:text-purple-500">CV</button>
+                <button onclick="showSection('portfolio')" class="nav-btn hover:text-purple-500">Portfolio</button>
+                <button onclick="showSection('contact')" class="nav-btn hover:text-purple-500">Contact</button>
+            </nav>
 
-                <h3 class="text-xl font-semibold text-purple-800 mt-4 mb-2">Educational Background</h3>
-                <div class="text-sm text-gray-700 space-y-2">
-                    <p><span class="font-bold">College:</span> Polytechnic University of the Philippines, Barangay Poblacion 2, Sto. Tomas Batangas (2024 - 2027)</p>
-                    <p><span class="font-bold">Senior High School:</span> Saint Benilde International School, Opulencia Compound, Calamba Laguna (2022 - 2024)</p>
-                    <p><span class="font-bold">High School:</span> John-David Christian School, Barangay Saimsim, Calamba Laguna (2018 - 2022)</p>
-                    <p><span class="font-bold">Elementary School:</span> Maunong Elementary School, Barangay Maunong, Calamba Laguna (2012 - 2018)</p>
-                    <p><span class="font-bold">Pre-school:</span> Maunong Day Care Center, Barangay Maunong, Calamba Laguna (2011 - 2012)</p>
-                </div>
+            <!-- About Section -->
+            <section id="about" class="section">
+                <div class="glass-card p-8 shadow-md space-y-6">
+                    <h2 class="text-2xl font-bold text-purple-800 mb-4">About Me</h2>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Hi! I'm a Student Athlete and an IT student balancing school and training.
+                        It's challenging, but I stay committed both my studies and my sport.
+                        Learning technology and problem-solving in IT, along with athletic journey, has taught me
+                        discipline, time management, and perseverance.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Currently, I'm focusing on improving my skills in IT while keeping up with my training schedule.
+                        I'm learning to manage my time better, take on new challenges, and grow both academically and
+                        athletically.
+                    </p>
 
-                <div class="mt-6">
-                    <a href="https://i.pinimg.com/1200x/d5/de/e9/d5dee9c6eb655ec7509c56b89a5da5fc.jpg" target="_blank" class="inline-block bg-purple-600 text-white font-semibold px-6 py-2 rounded-lg shadow hover:bg-blue-500 transition">
-                        Click to View CV
-                    </a>
-                </div>
-            </div>
-        </section>
+                    <h2 class="text-2xl font-bold text-purple-800 mb-4">Skills</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                        <!-- Skill 1 -->
+                        <div class="glass-card p-4 shadow-md break-words">
+                            <h3 class="text-lg font-bold text-gray-800 mb-2">Basic Programming</h3>
+                            <p class="text-sm text-gray-600">
+                                I understand the fundamentals of coding and can create simple programs.
+                                I’m continuously learning how to solve problems using code.
+                            </p>
+                        </div>
 
-        <!-- Portfolio Section -->
-        <section id="portfolio" class="section hidden">
-            <div class="glass-card p-8 shadow-md">
-                <h2 class="text-2xl font-bold text-purple-800 mb-4">Portfolio</h2>
-                <div class="grid md:grid-cols-2 gap-4">
-                    <div class="border border-gray-200 rounded-xl p-4 bg-white">
-                        <h3 class="font-semibold mb-1">Samsung Shop</h3>
-                        <a href="A02/index.html" class="btn btn-dark">View Project</a>
+                        <!-- Skill 2 -->
+                        <div class="glass-card p-4 shadow-md break-words">
+                            <h3 class="text-lg font-bold text-gray-800 mb-2">Basic Web Development</h3>
+                            <p class="text-sm text-gray-600">
+                                I can build simple and responsive websites using HTML and CSS,
+                                and I’m improving my skills in designing clean and user-friendly pages.
+                            </p>
+                        </div>
                     </div>
-                    <div class="border border-gray-200 rounded-xl p-4 bg-white">
-                        <h3 class="font-semibold mb-1">Project 2</h3>
-                        <p class="text-sm text-gray-600">2.</p>
+                </div>
+            </section>
+            <!-- CV Section -->
+            <section id="cv" class="section hidden">
+                <div class="glass-card p-8 shadow-md space-y-6">
+                    <h2 class="text-2xl font-bold text-purple-800 mb-4">Curriculum Vitae</h2>
+
+                    <h3 class="text-xl font-semibold text-purple-800 mb-2">Personal Profile</h3>
+                    <div class="text-sm text-gray-700 space-y-2">
+                        <p><span class="font-bold">Date of Birth:</span> October 02, 2006</p>
+                        <p><span class="font-bold">Place of Birth:</span> Maunong, Calamba Laguna</p>
+                        <p><span class="font-bold">Citizenship:</span> Filipino</p>
+                        <p><span class="font-bold">Sex:</span> Female</p>
+                        <p><span class="font-bold">Age:</span> 19</p>
+                        <p><span class="font-bold">Civil Status:</span> Single</p>
+                        <p><span class="font-bold">Religion:</span> Roman Catholic</p>
+                        <p><span class="font-bold">Father’s Name:</span> Rolando A. Lachica</p>
+                        <p><span class="font-bold">Mother’s Name:</span> Lucita S. Lachica</p>
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-purple-800 mt-4 mb-2">Educational Background</h3>
+                    <div class="text-sm text-gray-700 space-y-2">
+                        <p><span class="font-bold">College:</span> Polytechnic University of the Philippines, Barangay
+                            Poblacion 2, Sto. Tomas Batangas (2024 - 2027)</p>
+                        <p><span class="font-bold">Senior High School:</span> Saint Benilde International School,
+                            Opulencia Compound, Calamba Laguna (2022 - 2024)</p>
+                        <p><span class="font-bold">High School:</span> John-David Christian School, Barangay Saimsim,
+                            Calamba Laguna (2018 - 2022)</p>
+                        <p><span class="font-bold">Elementary School:</span> Maunong Elementary School, Barangay
+                            Maunong, Calamba Laguna (2012 - 2018)</p>
+                        <p><span class="font-bold">Pre-school:</span> Maunong Day Care Center, Barangay Maunong, Calamba
+                            Laguna (2011 - 2012)</p>
+                    </div>
+
+                    <div class="mt-6">
+                        <a href="https://i.pinimg.com/1200x/d5/de/e9/d5dee9c6eb655ec7509c56b89a5da5fc.jpg"
+                            target="_blank"
+                            class="inline-block bg-purple-600 text-white font-semibold px-6 py-2 rounded-lg shadow hover:bg-blue-500 transition">
+                            Click to View CV
+                        </a>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="section hidden">
-            <div class="glass-card p-8 shadow-md">
-                <h2 class="text-2xl font-bold text-purple-800 mb-4">Contact</h2>
-                <p class="text-gray-600 mb-4">Feel free to reach out!</p>
-                <div class="space-y-2 text-gray-700 text-sm">
-                    <p><i class="fa-solid fa-envelope mr-2"></i>akhennalachica02@gmail.com</p>
-                    <p><i class="fa-solid fa-phone mr-2"></i>09939368970</p>
-                    <p><i class="fa-solid fa-location-dot mr-2"></i>Calamba, Laguna</p>
+            <!-- Portfolio Section -->
+            <section id="portfolio" class="section hidden">
+                <div class="glass-card p-8 shadow-md">
+                    <h2 class="text-2xl font-bold text-purple-800 mb-6">Portfolio</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                        <!-- Project  -->
+                        <div class="border border-gray-200 rounded-xl p-6 bg-white flex flex-col justify-between">
+                            <h3 class="font-semibold text-lg mb-3">Samsung Shop</h3>
+                            <a href="A02/index.html"
+                                class="self-start mt-auto px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded">View
+                                Project</a>
+                        </div>
+
+                        <!-- Project 2 -->
+                        <div class="border border-gray-200 rounded-xl p-6 bg-white flex flex-col justify-between">
+                            <h3 class="font-semibold text-lg mb-3">Project 2</h3>
+                            <p class="text-sm text-gray-600 mt-auto">Description or details about this project.</p>
+                        </div>
+
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-    </main>
-</div>
+            <!-- Contact Section -->
+            <section id="contact" class="section hidden">
+                <div class="glass-card p-8 shadow-md">
+                    <h2 class="text-2xl font-bold text-purple-800 mb-4">Contact</h2>
+                    <p class="text-gray-600 mb-4">Feel free to reach out!</p>
+                    <div class="space-y-2 text-gray-700 text-sm">
+                        <p><i class="fa-solid fa-envelope mr-2"></i>akhennalachica02@gmail.com</p>
+                        <p><i class="fa-solid fa-phone mr-2"></i>09939368970</p>
+                        <p><i class="fa-solid fa-location-dot mr-2"></i>Calamba, Laguna</p>
+                    </div>
+                </div>
+            </section>
 
-<script>
-    function showSection(sectionId) {
-        const sections = document.querySelectorAll('.section');
-        sections.forEach(sec => sec.classList.add('hidden'));
-        document.getElementById(sectionId).classList.remove('hidden');
+        </main>
+    </div>
 
-        const buttons = document.querySelectorAll('.nav-btn');
-        buttons.forEach(btn => btn.classList.remove('text-blue-600'));
-        event.target.classList.add('text-blue-600');
-    }
-</script>
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(sec => sec.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => btn.classList.remove('text-blue-600'));
+            event.target.classList.add('text-blue-600');
+        }
+    </script>
 
 </body>
+
 </html>
