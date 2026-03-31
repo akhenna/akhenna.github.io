@@ -22,7 +22,6 @@
             border-radius: 20px;
         }
 
-        /* Responsive fixes for small screens */
         body,
         .glass-card,
         .section,
@@ -31,7 +30,6 @@
         h2,
         h3 {
             word-break: break-word;
-            /* break long text */
         }
 
         @media (max-width: 640px) {
@@ -40,29 +38,23 @@
             h2,
             h3 {
                 font-size: 1rem;
-                /* headings smaller on mobile */
             }
 
             p {
                 font-size: 0.875rem;
-                /* smaller paragraph text */
             }
 
             .glass-card {
                 padding: 1rem;
-                /* reduce padding on mobile */
             }
 
             .nav-btn {
                 font-size: 0.875rem;
-                /* smaller navbar buttons */
                 margin-bottom: 0.25rem;
-                /* wrap spacing */
             }
 
             nav {
                 flex-wrap: wrap;
-                /* navbar buttons wrap to next line */
             }
         }
     </style>
@@ -72,7 +64,6 @@
 
     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6">
 
-        <!-- Sidebar -->
         <aside class="md:col-span-4 lg:col-span-3">
             <div class="glass-card p-8 text-center shadow-lg md:sticky md:top-10">
                 <img src="https://i.pinimg.com/140x140_RS/37/31/ef/3731efbfe7637263c6f47a6a7c7d80ce.jpg"
@@ -102,10 +93,8 @@
             </div>
         </aside>
 
-        <!-- Main Content -->
         <main class="md:col-span-8 lg:col-span-9 space-y-6">
 
-            <!-- Navbar -->
             <nav class="glass-card p-4 shadow-sm flex justify-end space-x-6 text-sm font-medium text-gray-600">
                 <button onclick="showSection('about')" class="nav-btn text-purple-600">About</button>
                 <button onclick="showSection('cv')" class="nav-btn hover:text-purple-500">CV</button>
@@ -113,7 +102,6 @@
                 <button onclick="showSection('contact')" class="nav-btn hover:text-purple-500">Contact</button>
             </nav>
 
-            <!-- About Section -->
             <section id="about" class="section">
                 <div class="glass-card p-8 shadow-md space-y-6">
                     <h2 class="text-2xl font-bold text-purple-800 mb-4">About Me</h2>
@@ -131,7 +119,6 @@
 
                     <h2 class="text-2xl font-bold text-purple-800 mb-4">Skills</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                        <!-- Skill 1 -->
                         <div class="glass-card p-4 shadow-md break-words">
                             <h3 class="text-lg font-bold text-gray-800 mb-2">Basic Programming</h3>
                             <p class="text-sm text-gray-600">
@@ -140,7 +127,6 @@
                             </p>
                         </div>
 
-                        <!-- Skill 2 -->
                         <div class="glass-card p-4 shadow-md break-words">
                             <h3 class="text-lg font-bold text-gray-800 mb-2">Basic Web Development</h3>
                             <p class="text-sm text-gray-600">
@@ -151,7 +137,7 @@
                     </div>
                 </div>
             </section>
-            <!-- CV Section -->
+
             <section id="cv" class="section hidden">
                 <div class="glass-card p-8 shadow-md space-y-6">
                     <h2 class="text-2xl font-bold text-purple-800 mb-4">Curriculum Vitae</h2>
@@ -193,13 +179,11 @@
                 </div>
             </section>
 
-            <!-- Portfolio Section -->
             <section id="portfolio" class="section hidden">
                 <div class="glass-card p-8 shadow-md">
                     <h2 class="text-2xl font-bold text-purple-800 mb-6">Portfolio</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                        <!-- Project  -->
                         <div class="border border-gray-200 rounded-xl p-6 bg-white flex flex-col justify-between">
                             <h3 class="font-semibold text-lg mb-3">Samsung Shop</h3>
                             <a href="A02/index.html"
@@ -207,7 +191,6 @@
                                 Project</a>
                         </div>
 
-                        <!-- Project 2 -->
                         <div class="border border-gray-200 rounded-xl p-6 bg-white flex flex-col justify-between">
                             <h3 class="font-semibold text-lg mb-3">Project 2</h3>
                             <p class="text-sm text-gray-600 mt-auto">Description or details about this project.</p>
@@ -217,7 +200,6 @@
                 </div>
             </section>
 
-            <!-- Contact Section -->
             <section id="contact" class="section hidden">
                 <div class="glass-card p-8 shadow-md">
                     <h2 class="text-2xl font-bold text-purple-800 mb-4">Contact</h2>
