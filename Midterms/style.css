@@ -1,0 +1,437 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+/* =========================
+   NAV
+========================= */
+.navbar {
+  background: #0b0b2c;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-circle {
+  width: 30px;
+  height: 30px;
+  background: orange;
+  border-radius: 50%;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  color: #aaa;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: orange;
+}
+
+.nav-links .active {
+  color: orange;
+}
+
+/* =========================
+   HERO
+========================= */
+.hero {
+  min-height: 90vh;
+  background: linear-gradient(120deg, #0b0b2c, #000);
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+.tag {
+  background: #222;
+  padding: 5px 15px;
+  border-radius: 20px;
+  color: orange;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+  font-size: 55px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.orange {
+  color: #ff7a00;
+}
+
+.yellow {
+  color: #ffc107;
+}
+
+/* BUTTON */
+.btn-orange {
+  margin-top: 20px;
+  padding: 12px 28px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(45deg, orange, red);
+  font-weight: bold;
+  color: black;
+  transition: 0.3s;
+}
+
+.btn-orange:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px orange;
+}
+
+/* =========================
+   IMAGE CARD
+========================= */
+.image-card {
+  width: 100%;
+  padding: 15px;
+  background: #111;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(255, 140, 0, 0.2);
+}
+
+.image-card img {
+  width: 100%;
+  display: block;
+  border-radius: 15px;
+  transition: 0.4s ease;
+}
+
+.image-card img:hover {
+  transform: scale(1.05);
+}
+
+/* =========================
+   INFO SECTION
+========================= */
+.info-section {
+  background: #f8f5f5;
+  padding: 80px 20px;
+  text-align: center;
+  color: #0f0e0e;
+}
+
+.info-section h2 {
+  max-width: 700px;
+  margin: auto;
+  line-height: 1.6;
+}
+
+/* =========================
+   CHARACTERS SECTION
+========================= */
+.characters-section {
+  background: #807f7e;
+  padding: 80px 20px;
+}
+
+/* =========================
+   GLASS CARD
+========================= */
+.glass-card {
+  background: linear-gradient(135deg, #df770f, #111);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  padding: 25px;
+  transition: 0.3s ease;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.glass-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(255, 165, 0, 0.4);
+}
+
+.glass-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+}
+
+/* =========================
+   CHARACTER CARD (FIXED CLEAN)
+========================= */
+.character-card {
+  background: linear-gradient(to bottom, #666, #111);
+  border-radius: 15px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+
+.character-card:hover {
+  transform: translateY(-5px);
+}
+
+/* IMAGE */
+.character-img {
+  height: 220px;
+  object-fit: contain;
+  display: block;
+  margin: auto;
+}
+
+/* LABEL */
+.character-info {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  background: black;
+  padding: 8px 15px;
+  border-radius: 20px;
+}
+
+/* NAME + RACE (CLEAN FIX) */
+.character-info h5,
+.character-info p {
+  margin: 0;
+  color: white;
+  /* 🔥 FIX: required mo */
+}
+
+.character-info h5 {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.character-info p {
+  font-size: 11px;
+  opacity: 0.9;
+}
+
+/* =========================
+   BUTTON OUTLINE
+========================= */
+.btn-outline-orange {
+  border: 2px solid orange;
+  background: transparent;
+  padding: 10px 25px;
+  border-radius: 30px;
+  color: orange;
+  transition: 0.3s;
+}
+
+.btn-outline-orange:hover {
+  background: orange;
+  color: black;
+}
+
+/* =========================
+   STATS
+========================= */
+.stats-section {
+  background: #07071f;
+  color: white;
+  padding: 60px 20px;
+}
+
+/* =========================
+   CTA
+========================= */
+.cta-section {
+  background: linear-gradient(90deg, orange, #ffb300);
+  padding: 80px 20px;
+  color: white;
+  text-align: center;
+}
+
+.btn-white {
+  background: white;
+  color: orange;
+  padding: 10px 30px;
+  border-radius: 30px;
+  border: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-white:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px white;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer {
+  background: #050516;
+  color: #ccc;
+  padding: 70px 20px 30px;
+  margin-top: 50px;
+}
+
+.footer h4,
+.footer h5 {
+  color: white;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.footer-logo {
+  color: orange;
+  font-weight: 800;
+}
+
+.footer p {
+  color: #aaa;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer ul li {
+  margin-bottom: 8px;
+}
+
+.footer ul li a {
+  text-decoration: none;
+  color: #aaa;
+  font-size: 14px;
+}
+
+.footer ul li a:hover {
+  color: orange;
+}
+
+/* =========================
+   SOCIAL ICONS
+========================= */
+.social-icons {
+  margin-top: 15px;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 18px;
+  margin-right: 12px;
+  transition: 0.3s;
+  display: inline-block;
+}
+
+.social-icons a:hover {
+  color: orange;
+  transform: translateY(-3px) scale(1.1);
+}
+
+/* =========================
+   FOOTER BOTTOM
+========================= */
+.footer-bottom {
+  border-top: 1px solid #222;
+  margin-top: 40px;
+  padding-top: 20px;
+  font-size: 13px;
+  color: #777;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+
+  .hero {
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .image-card {
+    margin-top: 20px;
+  }
+
+  .footer {
+    text-align: center;
+  }
+}
+
+
+/* =========================
+   CHARACTER PAGE HEADER
+========================= */
+.character-header {
+  background: #0b0b2c;
+  padding: 40px 20px;
+  color: white;
+}
+
+.character-header h2 {
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+/* SEARCH BOX */
+.search-box {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-box input {
+  width: 300px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 20px 0 0 20px;
+}
+
+.search-box button {
+  padding: 10px 15px;
+  border: none;
+  background: orange;
+  color: black;
+  border-radius: 0 20px 20px 0;
+  cursor: pointer;
+}
+
+/* CHARACTER TEXT FIX */
+.character-info h5,
+.character-info p {
+  color: white !important;
+}
+
+/* HEART ICON */
+.heart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.heart.active {
+  color: red;
+}
+
+/* CARD CLEAN FIX */
+.character-card {
+  background: linear-gradient(to bottom, #666, #111);
+  border-radius: 15px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}

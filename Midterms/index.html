@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dragon Ball Universe</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar px-5">
+    <div class="logo d-flex align-items-center gap-2">
+      <div class="logo-circle"></div>
+      <span>DRAGON BALL UNIVERSE</span>
+    </div>
+
+    <div class="ms-auto nav-links">
+      <a class="active" href="#">HOME</a>
+      <a href="#charactersSection">CHARACTERS</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero container-fluid px-5" data-aos="fade-up">
+    <div class="row align-items-center">
+
+      <div class="col-lg-6">
+        <div class="tag">⚡ THE LEGEND BEGINS</div>
+
+        <h1>
+          DISCOVER THE <br>
+          <span class="orange">DRAGON</span> <br>
+          <span class="yellow">BALL</span> UNIVERSE
+        </h1>
+
+        <p>
+          Explore the legendary world of Dragon Ball. Meet every character,
+          discover transformations, and compare power levels.
+        </p>
+
+        <button class="btn-orange" onclick="scrollToCharacters()">
+          EXPLORE CHARACTERS →
+        </button>
+      </div>
+
+      <div class="col-lg-6 text-center">
+        <div class="image-card">
+          <img
+            src="https://static0.srcdn.com/wordpress/wp-content/uploads/2022/02/Dragon-Ball-Z-characters-who-could-be-on-Goku-second-tournament-of-power-team-vegeta-brody.jpg?q=50&fit=crop&w=1600&h=900&dpr=1.51">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- INFO -->
+  <section class="info-section text-center" data-aos="fade-up">
+    <div class="container">
+      <p class="welcome">WELCOME TO THE UNIVERSE</p>
+
+      <h2>
+        Dragon Ball is the legendary manga and anime created by Akira Toriyama.
+        A world full of warriors, transformations, and epic battles.
+      </h2>
+    </div>
+  </section>
+
+  <!-- CHARACTERS -->
+  <section class="characters-section text-center" id="charactersSection" data-aos="fade-up">
+    <div class="container">
+
+      <h2 class="section-title">MEET THE WARRIORS</h2>
+
+      <div class="row mt-5" id="characters"></div>
+
+      <a href="character.html" class="btn-outline-orange text-decoration-none d-inline-block">
+        VIEW ALL CHARACTERS →
+      </a>
+
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-section text-center" data-aos="fade-up">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-3">
+          <h2 class="orange">100+</h2>
+          <p>CHARACTERS</p>
+        </div>
+
+        <div class="col-md-3">
+          <h2 class="yellow">50+</h2>
+          <p>TRANSFORMATIONS</p>
+        </div>
+
+        <div class="col-md-3">
+          <h2 class="orange">20+</h2>
+          <p>PLANETS</p>
+        </div>
+
+        <div class="col-md-3">
+          <h2 class="yellow">40+</h2>
+          <p>YEARS</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section text-center" data-aos="zoom-in">
+    <div class="container">
+      <h2>READY TO POWER UP?</h2>
+      <p>Find your favorite Dragon Ball fighters.</p>
+      <button class="btn-white" onclick="scrollToCharacters()">
+        START EXPLORING →
+      </button>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" data-aos="fade-up">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-4">
+          <h4 class="footer-logo">Dragon Ball</h4>
+          <p>
+            The ultimate destination for Dragon Ball fans.
+            Explore characters and power levels.
+          </p>
+
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <h5>Explore</h5>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#charactersSection">Characters</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-3">
+          <h5>Dragon Ball</h5>
+          <ul>
+            <li>Akira Toriyama</li>
+            <li>Toei Animation</li>
+            <li>Shueisha</li>
+          </ul>
+        </div>
+
+        <div class="col-md-3">
+          <h5>Connect</h5>
+          <p>Follow for updates</p>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom text-center mt-4">
+        <p>Dragon Ball Universe | Not official site</p>
+        <p>Made with love for sir cj</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+</body>
+
+</html>
