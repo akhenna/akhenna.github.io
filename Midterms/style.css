@@ -4,9 +4,6 @@ body {
   overflow-x: hidden;
 }
 
-/* =========================
-   NAV
-========================= */
 .navbar {
   background: #0b0b2c;
   color: white;
@@ -75,7 +72,6 @@ body {
   color: #ffc107;
 }
 
-/* BUTTON */
 .btn-orange {
   margin-top: 20px;
   padding: 12px 28px;
@@ -92,9 +88,6 @@ body {
   box-shadow: 0 0 15px orange;
 }
 
-/* =========================
-   IMAGE CARD
-========================= */
 .image-card {
   width: 100%;
   padding: 15px;
@@ -115,9 +108,6 @@ body {
   transform: scale(1.05);
 }
 
-/* =========================
-   INFO SECTION
-========================= */
 .info-section {
   background: #f8f5f5;
   padding: 80px 20px;
@@ -131,17 +121,11 @@ body {
   line-height: 1.6;
 }
 
-/* =========================
-   CHARACTERS SECTION
-========================= */
 .characters-section {
   background: #807f7e;
   padding: 80px 20px;
 }
 
-/* =========================
-   GLASS CARD
-========================= */
 .glass-card {
   background: linear-gradient(135deg, #df770f, #111);
   backdrop-filter: blur(12px);
@@ -165,9 +149,6 @@ body {
   object-fit: contain;
 }
 
-/* =========================
-   CHARACTER CARD (FIXED CLEAN)
-========================= */
 .character-card {
   background: linear-gradient(to bottom, #666, #111);
   border-radius: 15px;
@@ -181,7 +162,6 @@ body {
   transform: translateY(-5px);
 }
 
-/* IMAGE */
 .character-img {
   height: 220px;
   object-fit: contain;
@@ -189,7 +169,6 @@ body {
   margin: auto;
 }
 
-/* LABEL */
 .character-info {
   position: absolute;
   bottom: 15px;
@@ -199,12 +178,10 @@ body {
   border-radius: 20px;
 }
 
-/* NAME + RACE (CLEAN FIX) */
 .character-info h5,
 .character-info p {
   margin: 0;
   color: white;
-  /* 🔥 FIX: required mo */
 }
 
 .character-info h5 {
@@ -217,9 +194,6 @@ body {
   opacity: 0.9;
 }
 
-/* =========================
-   BUTTON OUTLINE
-========================= */
 .btn-outline-orange {
   border: 2px solid orange;
   background: transparent;
@@ -234,18 +208,12 @@ body {
   color: black;
 }
 
-/* =========================
-   STATS
-========================= */
 .stats-section {
   background: #07071f;
   color: white;
   padding: 60px 20px;
 }
 
-/* =========================
-   CTA
-========================= */
 .cta-section {
   background: linear-gradient(90deg, orange, #ffb300);
   padding: 80px 20px;
@@ -268,9 +236,6 @@ body {
   box-shadow: 0 0 15px white;
 }
 
-/* =========================
-   FOOTER
-========================= */
 .footer {
   background: #050516;
   color: #ccc;
@@ -315,9 +280,6 @@ body {
   color: orange;
 }
 
-/* =========================
-   SOCIAL ICONS
-========================= */
 .social-icons {
   margin-top: 15px;
 }
@@ -335,9 +297,6 @@ body {
   transform: translateY(-3px) scale(1.1);
 }
 
-/* =========================
-   FOOTER BOTTOM
-========================= */
 .footer-bottom {
   border-top: 1px solid #222;
   margin-top: 40px;
@@ -346,9 +305,6 @@ body {
   color: #777;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
 @media (max-width: 768px) {
 
   .hero {
@@ -368,10 +324,6 @@ body {
   }
 }
 
-
-/* =========================
-   CHARACTER PAGE HEADER
-========================= */
 .character-header {
   background: #0b0b2c;
   padding: 40px 20px;
@@ -383,7 +335,7 @@ body {
   letter-spacing: 2px;
 }
 
-/* SEARCH BOX */
+
 .search-box {
   margin-top: 15px;
   display: flex;
@@ -407,13 +359,11 @@ body {
   cursor: pointer;
 }
 
-/* CHARACTER TEXT FIX */
 .character-info h5,
 .character-info p {
   color: white !important;
 }
 
-/* HEART ICON */
 .heart {
   position: absolute;
   top: 10px;
@@ -426,7 +376,6 @@ body {
   color: red;
 }
 
-/* CARD CLEAN FIX */
 .character-card {
   background: linear-gradient(to bottom, #666, #111);
   border-radius: 15px;

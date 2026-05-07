@@ -2,9 +2,6 @@ const API_URL = "https://dragonball-api.com/api/characters";
 
 let allCharacters = [];
 
-/* =========================
-   LOAD CHARACTERS (LIMIT)
-========================= */
 async function loadCharacters(limit = 100) {
   try {
     const res = await fetch(`${API_URL}?limit=${limit}`);
@@ -19,9 +16,6 @@ async function loadCharacters(limit = 100) {
   }
 }
 
-/* =========================
-   VIEW ALL CHARACTERS
-========================= */
 async function loadAllCharacters() {
   try {
     const res = await fetch(API_URL);
@@ -36,9 +30,6 @@ async function loadAllCharacters() {
   }
 }
 
-/* =========================
-   DISPLAY CHARACTERS (FIXED)
-========================= */
 function displayCharacters(characters) {
   const container = document.getElementById("characters");
   const countText = document.getElementById("countText");
@@ -47,7 +38,6 @@ function displayCharacters(characters) {
 
   container.innerHTML = "";
 
-  // 🔥 ONLY 3 CHARACTERS
   const allowed = ["goku", "vegeta", "piccolo"];
 
   const filtered = characters.filter(char => {
@@ -65,7 +55,6 @@ function displayCharacters(characters) {
 
     const name = (char.name || "").toLowerCase();
 
-    // 🔥 FIX RACE
     let race = "Unknown";
 
     if (name === "goku") race = "Saiyan";
@@ -99,9 +88,6 @@ function displayCharacters(characters) {
   container.innerHTML = html || "<p>No characters found</p>";
 }
 
-/* =========================
-   SEARCH (REAL TIME)
-========================= */
 function searchCharacter() {
   const input = document.getElementById("searchInput");
   const value = (input?.value || "").toLowerCase();
@@ -113,9 +99,6 @@ function searchCharacter() {
   displayCharacters(filtered);
 }
 
-/* =========================
-   MODAL DETAILS (OPTIONAL READY)
-========================= */
 function showDetails(char) {
   const modalContent = document.getElementById("modalContent");
 
@@ -142,9 +125,6 @@ function showDetails(char) {
   modal.show();
 }
 
-/* =========================
-   FORMAT NAME
-========================= */
 function formatName(name) {
   if (!name) return "Unknown";
 
@@ -155,9 +135,6 @@ function formatName(name) {
     .join(" ");
 }
 
-/* =========================
-   HEART TOGGLE
-========================= */
 function toggleHeart(el) {
   el.classList.toggle("fa-regular");
   el.classList.toggle("fa-solid");
@@ -169,7 +146,4 @@ function scrollToCharacters() {
     .scrollIntoView({ behavior: "smooth" });
 }
 
-/* =========================
-   INIT
-========================= */
 loadCharacters();
