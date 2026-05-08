@@ -73,6 +73,7 @@
           <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="#">Characters</a></li>
+             <li><a href="about.html">About</a></li>
           </ul>
         </div>
 
@@ -100,6 +101,60 @@
   </footer>
 
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #0b0b0b;
+      overflow-x: hidden;
+    }
+
+    .navbar {
+      padding: 20px 50px;
+      background: #050516;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: orange;
+    }
+
+    .theme-btn {
+      border: none;
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      background: orange;
+      color: black;
+    }
+
+    .character-header h2 {
+      color: orange;
+      font-weight: 800;
+    }
+
     .search-box input {
       width: 300px;
       padding: 10px 15px;
@@ -203,6 +258,11 @@
       color: orange;
     }
 
+    .footer ul {
+      padding: 0;
+      list-style: none;
+    }
+
     .footer-bottom {
       border-top: 1px solid #222;
       padding-top: 15px;
@@ -219,31 +279,246 @@
       background-color: orange;
     }
 
-  
-    .theme-btn {
-      border: none;
-      padding: 6px 12px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: 600;
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
     }
 
- 
-    body {
-      background: #0b0b0b;
+    .social-icons a {
+      color: white;
+      font-size: 20px;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: orange;
+      transform: scale(1.2);
     }
 
     body.light-mode {
       background: #f5f5f5;
     }
 
-    /* ONLY NAME FIX IN LIGHT MODE */
     body.light-mode .character-info h5 {
       color: #111;
     }
 
     body.light-mode .character-info p {
       color: #333;
+    }
+
+    /* =========================
+       RESPONSIVE DESIGN
+    ========================= */
+
+    @media (max-width: 992px) {
+
+      .navbar {
+        padding: 20px !important;
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+      }
+
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .character-header {
+        padding: 0 20px;
+      }
+
+      .character-header h2 {
+        font-size: 40px;
+      }
+
+      .search-box input {
+        width: 100%;
+        max-width: 500px;
+      }
+
+      .cards-section {
+        padding: 0 10px;
+      }
+
+      .character-card {
+        height: 300px;
+      }
+
+      .character-img {
+        height: 220px;
+      }
+
+      .footer {
+        text-align: center;
+      }
+
+      .footer .row {
+        gap: 35px;
+      }
+
+      .social-icons {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+
+      .character-card {
+        height: 280px;
+      }
+
+      .character-img {
+        height: 200px;
+      }
+
+      .modal-dialog {
+        margin: 15px;
+      }
+
+      .modal-content img {
+        height: 150px;
+      }
+    }
+
+    @media (max-width: 576px) {
+
+      body {
+        overflow-x: hidden;
+      }
+
+      .navbar {
+        padding: 15px !important;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .logo {
+        font-size: 14px;
+        text-align: center;
+        width: 100%;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+      }
+
+      .theme-btn {
+        width: 100%;
+        margin-top: 10px;
+        font-size: 13px;
+      }
+
+      .character-header {
+        padding: 0 15px;
+      }
+
+      .character-header h2 {
+        font-size: 28px;
+      }
+
+      .search-box input {
+        width: 100%;
+        max-width: 100%;
+        font-size: 13px;
+        padding: 10px;
+      }
+
+      .cards-section {
+        padding: 0 8px;
+      }
+
+      .row.g-4 {
+        --bs-gutter-x: 10px;
+        --bs-gutter-y: 10px;
+      }
+
+      .character-card {
+        height: 230px;
+        padding: 8px;
+      }
+
+      .character-img {
+        height: 150px;
+      }
+
+      .character-info {
+        left: 6px;
+        bottom: 6px;
+        padding: 4px 7px;
+      }
+
+      .character-info h5 {
+        font-size: 11px;
+      }
+
+      .character-info p {
+        font-size: 9px;
+      }
+
+      .heart {
+        font-size: 13px;
+        top: 8px;
+        right: 8px;
+      }
+
+      .modal-content {
+        padding: 10px !important;
+      }
+
+      .modal-content h4 {
+        font-size: 18px;
+      }
+
+      .modal-content p {
+        font-size: 12px;
+      }
+
+      .modal-content img {
+        height: 130px;
+      }
+
+      .transformation-img {
+        height: 100px;
+      }
+
+      .footer {
+        padding: 40px 15px 20px;
+        text-align: center;
+      }
+
+      .footer .row {
+        gap: 30px;
+      }
+
+      .footer h4,
+      .footer h5 {
+        font-size: 18px;
+      }
+
+      .footer p,
+      .footer a,
+      .footer li {
+        font-size: 13px;
+      }
+
+      .social-icons {
+        justify-content: center;
+      }
+
+      .footer-bottom {
+        font-size: 11px;
+      }
     }
   </style>
 
@@ -305,7 +580,7 @@
 
       chars.forEach((c, i) => {
         container.innerHTML += `
-      <div class="col-6 col-md-4 col-lg-4">
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
         <div class="character-card" onclick="openModal(${i})">
 
           <i class="fa-regular fa-heart heart"
@@ -385,7 +660,6 @@
 
     loadCharacters();
 
-    /* THEME TOGGLE */
     const toggleBtn = document.getElementById("themeToggle");
     let light = false;
 
