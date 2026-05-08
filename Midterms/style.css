@@ -37,9 +37,7 @@ body {
   color: orange;
 }
 
-/* =========================
-   HERO
-========================= */
+
 .hero {
   min-height: 90vh;
   background: linear-gradient(120deg, #0b0b2c, #000);
@@ -150,7 +148,7 @@ body {
 }
 
 .character-card {
-  background: linear-gradient(to bottom, #666, #111);
+  background: linear-gradient(to bottom, #505052, #111);
   border-radius: 15px;
   padding: 20px;
   position: relative;
