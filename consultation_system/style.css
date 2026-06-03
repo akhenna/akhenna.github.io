@@ -21,6 +21,9 @@ body{
     justify-content:space-between;
     align-items:center;
     padding:15px 40px;
+
+    position: relative;
+    z-index: 99999;
 }
 
 .logo{
@@ -84,6 +87,7 @@ body{
         transparent 1px
     );
     background-size:40px 40px;
+    pointer-events:none;
 }
 
 .hero-content{

@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -20,12 +20,12 @@
         <h2>PUP AppointEd</h2>
     </div>
 
-    <div class="nav-links">
-        <a href="#">Home</a>
-        <a href="#">Login</a>
-        <a href="#">Register</a>
-        <a href="#" class="get-started">Get Started</a>
-    </div>
+<div class="nav-links">
+    <a href="index.php">Home</a>
+    <a href="login.php">Login</a>
+    <a href="register.php">Register</a>
+    <a href="register.php" class="get-started">Get Started</a>
+</div>
 
 </nav>
 
@@ -53,7 +53,7 @@
 
             <div class="buttons">
                 <a href="register.php" class="btn-primary">Register as Student</a>
-                <a href="#" class="btn-secondary">Sign In</a>
+               <a href="login.php" class="btn-secondary">Sign In</a>
             </div>
 
         </div>
@@ -143,16 +143,10 @@
 
 </section>
 
-</body>
-</html>
-
-<!-- FOR STUDENTS -->
-
 <section class="students-section">
 
     <div class="students-container">
 
-        <!-- Left Card -->
         <div class="student-card">
 
             <div class="card-header">
@@ -180,7 +174,6 @@
 
         </div>
 
-        <!-- Right Content -->
         <div class="student-content">
 
             <h2>For Students</h2>
@@ -194,19 +187,15 @@
             <ul class="student-features">
 
                 <li>Book appointments online 24/7</li>
-
                 <li>View faculty availability in real-time</li>
-
                 <li>Submit consultation concerns in advance</li>
-
                 <li>Track appointment status updates</li>
-
                 <li>Access your consultation history</li>
 
             </ul>
 
-            <a href="#" class="student-btn">
-                Register Now
+          <a href="register.php" class="student-btn">
+    Register Now
             </a>
 
         </div>
@@ -215,13 +204,9 @@
 
 </section>
 
-<!-- FOR FACULTY -->
-
 <section class="faculty-section">
 
     <div class="faculty-container">
-
-        <!-- Left Content -->
 
         <div class="faculty-content">
 
@@ -235,13 +220,9 @@
             <ul class="faculty-features">
 
                 <li>Set your available consultation hours</li>
-
                 <li>Approve or reject appointment requests</li>
-
                 <li>View student concerns in advance</li>
-
                 <li>Track your consultation history</li>
-
                 <li>Get notified of new bookings</li>
 
             </ul>
@@ -251,8 +232,6 @@
             </a>
 
         </div>
-
-        <!-- Right Card -->
 
         <div class="faculty-card">
 
@@ -287,8 +266,6 @@
     </div>
 
 </section>
-
-<!-- ADMIN DASHBOARD -->
 
 <section class="admin-section">
 
@@ -345,8 +322,6 @@
 
 </section>
 
-<!-- CTA SECTION -->
-
 <section class="cta-section">
 
     <div class="cta-container">
@@ -359,20 +334,20 @@
         </p>
 
         <div class="cta-buttons">
-            <a href="#" class="cta-primary">
+
+            <a href="register.php" class="cta-primary">
                 Register as Student
             </a>
 
-            <a href="#" class="cta-secondary">
+            <a href="login.php" class="cta-secondary">
                 Sign In
             </a>
+
         </div>
 
     </div>
 
 </section>
-
-<!-- FOOTER -->
 
 <footer class="footer">
 
@@ -397,11 +372,9 @@
 
         <div class="footer-column">
 
-            <h4>Quick Links</h4>
-
-            <a href="#">Home</a>
-            <a href="#">Login</a>
-            <a href="#">Register</a>
+          <a href="index.php">Home</a>
+          <a href="login.php">Login</a>
+          <a href="register.php">Register</a>
 
         </div>
 
@@ -430,11 +403,6 @@
     <div class="footer-bottom">
         © 2026 Polytechnic University of the Philippines. All rights reserved.
     </div>
-
-</footer>
-<!-- FOOTER -->
-<footer class="footer">
-</footer>
 
 <script>
 const tabs = document.querySelectorAll('.tab');
