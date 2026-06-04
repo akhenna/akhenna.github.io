@@ -39,7 +39,9 @@ font-family:'Poppins',sans-serif;
 body{
 display:flex;
 background:#f6f7fb;
+min-height:100vh;
 }
+
 
 .sidebar{
 width:260px;
@@ -87,10 +89,11 @@ color:#666;
 }
 
 .history-container{
-display:flex;
-flex-direction:column;
+display:grid;
+grid-template-columns:1fr;
 gap:15px;
 }
+
 
 .history-card{
 background:white;
@@ -115,6 +118,7 @@ font-size:14px;
 margin-bottom:5px;
 }
 
+
 .completed-badge{
 display:inline-block;
 margin-top:10px;
@@ -126,6 +130,7 @@ font-size:12px;
 font-weight:600;
 }
 
+
 .empty{
 background:white;
 padding:30px;
@@ -135,10 +140,63 @@ color:#777;
 border:1px solid #eee;
 }
 
+@media (max-width: 992px){
+.main{
+padding:20px;
+}
+}
+
+@media (max-width: 768px){
+
+body{
+flex-direction:column;
+}
+
+.sidebar{
+width:100%;
+min-height:auto;
+text-align:center;
+}
+
+.menu{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:8px;
+}
+
+.menu a{
+flex:1 1 40%;
+text-align:center;
+}
+
+.main{
+padding:15px;
+}
+
+.history-card{
+padding:15px;
+}
+
+.history-card h3{
+font-size:16px;
+}
+
+.history-card p{
+font-size:13px;
+}
+
+.completed-badge{
+font-size:11px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
+
 
 <div class="sidebar">
 
@@ -195,4 +253,4 @@ border:1px solid #eee;
 </div>
 
 </body>
-</html>
+</html> 

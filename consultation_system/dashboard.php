@@ -34,12 +34,11 @@ $completed = mysqli_num_rows(mysqli_query($conn,
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard</title>
+<title>Student Dashboard</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -61,8 +60,7 @@ body{
     padding:20px;
 }
 
-.sidebar h2,
-.sidebar .logo{
+.sidebar h2{
     font-size:18px;
     margin-bottom:30px;
     font-weight:700;
@@ -82,24 +80,23 @@ body{
     background:rgba(255,255,255,.15);
 }
 
+
 .main{
     flex:1;
     padding:25px;
 }
 
-.topbar{
-    margin-bottom:20px;
-}
 
 .topbar h1{
     color:#800000;
 }
 
+
 .user{
-    margin-top:10px;
     display:flex;
     align-items:center;
     gap:10px;
+    margin-top:10px;
 }
 
 .avatar{
@@ -114,9 +111,10 @@ body{
     font-weight:700;
 }
 
+
 .cards{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    grid-template-columns:repeat(4,1fr);
     gap:15px;
     margin-top:20px;
 }
@@ -132,6 +130,7 @@ body{
     color:#800000;
     font-size:28px;
 }
+
 
 .content{
     margin-top:20px;
@@ -152,6 +151,7 @@ body{
     margin-bottom:15px;
 }
 
+
 .appointment{
     display:flex;
     justify-content:space-between;
@@ -169,6 +169,7 @@ body{
 .approved{background:#dcfce7;color:#15803d;}
 .completed{background:#dbeafe;color:#1d4ed8;}
 
+
 .cta{
     margin-top:20px;
     background:#800000;
@@ -178,6 +179,8 @@ body{
     display:flex;
     justify-content:space-between;
     align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
 }
 
 .btn{
@@ -189,11 +192,61 @@ body{
     font-weight:600;
 }
 
+
+@media (max-width: 992px){
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .content{
+        grid-template-columns:1fr;
+    }
+}
+
+
+@media (max-width: 768px){
+
+    body{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:100%;
+        min-height:auto;
+        text-align:center;
+    }
+
+    .menu{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:8px;
+    }
+
+    .menu a{
+        flex:1 1 40%;
+        text-align:center;
+    }
+
+    .main{
+        padding:15px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .cta{
+        flex-direction:column;
+        text-align:center;
+    }
+}
 </style>
 
 </head>
 
 <body>
+
 
 <div class="sidebar">
     <h2>PUP AppointEd</h2>
@@ -201,7 +254,7 @@ body{
     <div class="menu">
         <a class="active" href="dashboard.php">Dashboard</a>
         <a href="book_appointment.php">Book Appointment</a>
-        <a href="my_appointments.php">My Appointments</a>
+        <a href="my_appointment.php">My Appointments</a>
         <a href="history.php">History</a>
         <a href="profile.php">Profile</a>
         <a href="logout.php">Logout</a>
@@ -210,14 +263,20 @@ body{
 
 <div class="main">
 
-   <div class="topbar">
+    <div class="topbar">
+        <h1>Student Dashboard</h1>
 
-    <h1>Student Dashboard</h1>
-
-    <div class="user">
-
+        <div class="user">
+            <div class="avatar">
+                <?= strtoupper(substr($name,0,1)) ?>
+            </div>
+            <div>
+                <strong><?= $name ?></strong>
+            </div>
+        </div>
     </div>
 
+    
     <div class="cards">
 
         <div class="card">
@@ -274,6 +333,7 @@ body{
 
     </div>
 
+    
     <div class="cta">
         <div>
             <h2>Need a Consultation?</h2>
@@ -285,5 +345,4 @@ body{
 
 </div>
 
-</body>
-</html>
+</body> 

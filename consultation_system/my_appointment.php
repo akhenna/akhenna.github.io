@@ -12,11 +12,21 @@ if($conn->connect_error){
     die("Connection Failed: " . $conn->connect_error);
 }
 
+$student_id = $_SESSION['student_id'];
+
 $result = $conn->query("
 SELECT *
 FROM appointments
+WHERE student_id = '$student_id'
 ORDER BY created_at DESC
 ");
+
+$facultyNames = [
+    1 => 'Sir Christopher Jay De Claro',
+    2 => 'Sir Aris Dela Rea',
+    3 => 'Maam Melanie Castillo',
+    4 => 'Maam Marie Nel Velasco'
+];
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +50,7 @@ font-family:'Poppins',sans-serif;
 body{
 display:flex;
 background:#f6f7fb;
+min-height:100vh;
 }
 
 .sidebar{
@@ -111,6 +122,30 @@ color:#555;
 font-size:14px;
 }
 
+.status{
+display:inline-block;
+padding:5px 12px;
+border-radius:20px;
+font-size:12px;
+font-weight:600;
+margin-top:10px;
+}
+
+.pending{
+background:#fff3cd;
+color:#856404;
+}
+
+.approved{
+background:#d4edda;
+color:#155724;
+}
+
+.completed{
+background:#d1ecf1;
+color:#0c5460;
+}
+
 .empty{
 background:white;
 padding:30px;
@@ -120,7 +155,35 @@ text-align:center;
 color:#777;
 }
 
+@media (max-width:768px){
+
+body{
+flex-direction:column;
+}
+
+.sidebar{
+width:100%;
+min-height:auto;
+}
+
+.menu{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+}
+
+.menu a{
+flex:1 1 40%;
+text-align:center;
+}
+
+.main{
+padding:15px;
+}
+
+}
 </style>
+
 </head>
 <body>
 
@@ -148,40 +211,52 @@ color:#777;
 
 <?php if($result && $result->num_rows > 0): ?>
 
-    <?php while($row = $result->fetch_assoc()): ?>
+<?php while($row = $result->fetch_assoc()): ?>
 
-        <div class="card">
+<?php
+$facultyName = $facultyNames[$row['faculty_id']] ?? 'Unknown Faculty';
+$statusClass = strtolower($row['status']);
+?>
 
-            <h3><?= htmlspecialchars($row['concern']) ?></h3>
+<div class="card">
 
-            <div class="info">
-                <strong>Faculty:</strong>
-                <?= htmlspecialchars($row['faculty']) ?>
-            </div>
+<h3><?= htmlspecialchars($row['concern']) ?></h3>
 
-            <div class="info">
-                <strong>Schedule:</strong>
-                <?= htmlspecialchars($row['schedule']) ?>
-            </div>
+<div class="info">
+<strong>Faculty:</strong>
+<?= htmlspecialchars($facultyName) ?>
+</div>
 
-            <div class="info">
-                <strong>Date:</strong>
-                <?= date("F d, Y", strtotime($row['appointment_date'])) ?>
-            </div>
+<div class="info">
+<strong>Schedule:</strong>
+<?= htmlspecialchars($row['schedule']) ?>
+</div>
 
-            <div class="info">
-                <strong>Submitted:</strong>
-                <?= date("F d, Y h:i A", strtotime($row['created_at'])) ?>
-            </div>
+<div class="info">
+<strong>Date:</strong>
+<?= date("F d, Y", strtotime($row['appointment_date'])) ?>
+</div>
 
-        </div>
+<div class="info">
+<strong>Submitted:</strong>
+<?= date("F d, Y h:i A", strtotime($row['created_at'])) ?>
+</div>
 
-    <?php endwhile; ?>
+<div class="info">
+<strong>Status:</strong>
+<span class="status <?= $statusClass ?>">
+<?= ucfirst($row['status']) ?>
+</span>
+</div>
+
+</div>
+
+<?php endwhile; ?>
 
 <?php else: ?>
 
 <div class="empty">
-    No appointments found.
+No appointments found.
 </div>
 
 <?php endif; ?>

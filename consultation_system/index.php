@@ -60,33 +60,37 @@
 
         <div class="login-card">
 
-           <div class="tabs">
+       <div class="tabs">
     <button class="tab active" data-role="student">Student</button>
-    <button class="tab" data-role="faculty">Faculty</button>
-    <button class="tab" data-role="admin">Admin</button>
 </div>
 
-            <form>
+  <form action="student_login.php" method="POST">
 
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email"
-                    class="form-control"
-                    placeholder="student@pup.edu.ph">
-                </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input
+            type="email"
+            name="email"
+            class="form-control"
+            placeholder="student@pup.edu.ph"
+            required>
+    </div>
 
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password"
-                    class="form-control"
-                    placeholder="********">
-                </div>
+    <div class="form-group">
+        <label>Password</label>
+        <input
+            type="password"
+            name="password"
+            class="form-control"
+            placeholder="********"
+            required>
+    </div>
 
-                <button class="signin-btn">
-                    Sign In
-                </button>
+    <button type="submit" name="login" class="signin-btn">
+        Sign In
+    </button>
 
-            </form>
+</form>
 
         </div>
 
@@ -378,21 +382,12 @@
 
         </div>
 
-        <div class="footer-column">
-
-            <h4>Portals</h4>
-
-            <a href="#">Student Portal</a>
-            <a href="#">Faculty Portal</a>
-            <a href="#">Admin Portal</a>
-
-        </div>
 
         <div class="footer-column">
 
             <h4>Contact</h4>
 
-            <p>Poblacion 2, Sto.tomas</p>
+            <p>Poblacion 2, Sto.tomas 
             <p>Batangas, Philippines</p>
             <p>pupstc@gmail.com</p>
 
@@ -409,14 +404,15 @@ const tabs = document.querySelectorAll('.tab');
 const form = document.querySelector('form');
 
 tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
+    tab.addEventListener('click', ()) => {
 
         tabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
 
         const role = tab.dataset.role;
+        roleInput.value = role;
 
-        if(role === 'student'){
+            if(role === 'student'){
             form.innerHTML = `
                 <input type="hidden" name="role" value="student">
 
@@ -436,47 +432,8 @@ tabs.forEach(tab => {
             `;
         }
 
-        if(role === 'faculty'){
-            form.innerHTML = `
-                <input type="hidden" name="role" value="faculty">
-
-                <div class="form-group">
-                    <label>Faculty Email</label>
-                    <input type="email" class="form-control"
-                    placeholder="faculty@pup.edu.ph">
-                </div>
-
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control"
-                    placeholder="********">
-                </div>
-
-                <button class="signin-btn">Faculty Sign In</button>
-            `;
-        }
-
-        if(role === 'admin'){
-            form.innerHTML = `
-                <input type="hidden" name="role" value="admin">
-
-                <div class="form-group">
-                    <label>Admin Email</label>
-                    <input type="email" class="form-control"
-                    placeholder="admin@pup.edu.ph">
-                </div>
-
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control"
-                    placeholder="********">
-                </div>
-
-                <button class="signin-btn">Admin Sign In</button>
-            `;
         }
     });
-});
 </script>
 
 </body>

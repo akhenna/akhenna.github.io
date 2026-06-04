@@ -28,6 +28,7 @@ font-family:'Poppins',sans-serif;
 body{
 display:flex;
 background:#f6f7fb;
+min-height:100vh;
 }
 
 .sidebar{
@@ -70,11 +71,18 @@ margin-bottom:20px;
 color:#800000;
 }
 
+.small{
+font-size:13px;
+color:#666;
+}
+
+
 .container{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:20px;
 }
+
 
 .card{
 background:white;
@@ -82,6 +90,7 @@ padding:20px;
 border-radius:12px;
 border:1px solid #eee;
 }
+
 
 .faculty{
 display:flex;
@@ -93,6 +102,8 @@ border:1px solid #eee;
 margin-bottom:10px;
 cursor:pointer;
 transition:.3s;
+flex-wrap:wrap;
+gap:10px;
 }
 
 .faculty:hover{
@@ -104,10 +115,14 @@ border:2px solid #800000;
 background:#fff5f5;
 }
 
-.small{
-font-size:13px;
-color:#666;
+.badge{
+font-size:12px;
+padding:5px 10px;
+border-radius:20px;
+background:#e9ffe9;
+color:green;
 }
+
 
 label{
 display:block;
@@ -146,22 +161,45 @@ button:hover{
 background:#9b0000;
 }
 
-.badge{
-font-size:12px;
-padding:5px 10px;
-border-radius:20px;
-background:#e9ffe9;
-color:green;
-}
 
-@media(max-width:900px){
-
+@media (max-width: 992px){
 .container{
 grid-template-columns:1fr;
 }
+}
+
+
+@media (max-width: 768px){
+
+body{
+flex-direction:column;
+}
 
 .sidebar{
-width:220px;
+width:100%;
+min-height:auto;
+text-align:center;
+}
+
+.menu{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:8px;
+}
+
+.menu a{
+flex:1 1 40%;
+text-align:center;
+}
+
+.main{
+padding:15px;
+}
+
+.faculty{
+flex-direction:column;
+align-items:flex-start;
 }
 
 }
@@ -172,7 +210,6 @@ width:220px;
 <body>
 
 <div class="sidebar">
-
 <h2>PUP AppointEd</h2>
 
 <div class="menu">
@@ -183,7 +220,6 @@ width:220px;
 <a href="profile.php">Profile</a>
 <a href="logout.php">Logout</a>
 </div>
-
 </div>
 
 <div class="main">
@@ -201,11 +237,7 @@ width:220px;
 <br>
 
 <div class="faculty"
-onclick="selectFaculty(
-'Sir Christopher Jay De Claro',
-'Monday | 1:00 PM - 3:00 PM',
-this
-)">
+onclick="selectFaculty(1,'Sir Christopher Jay De Claro','Monday | 1:00 PM - 3:00 PM',this)">
 <div>
 <b>Sir Christopher Jay De Claro</b><br>
 <span class="small">Web Development · Professor</span>
@@ -214,37 +246,25 @@ this
 </div>
 
 <div class="faculty"
-onclick="selectFaculty(
-'Sir Aris Dela Rea',
-'Tuesday | 9:00 AM - 12:00 PM',
-this
-)">
+onclick="selectFaculty(2,'Sir Aris Dela Rea','Tuesday | 9:00 AM - 12:00 PM',this)">
 <div>
 <b>Sir Aris Dela Rea</b><br>
-<span class="small">System Administrator· Professor</span>
+<span class="small">System Administrator · Professor</span>
 </div>
 <span class="badge">Available</span>
 </div>
 
 <div class="faculty"
-onclick="selectFaculty(
-'Maam Melanie Castillo',
-'Wednesday | 2:00 PM - 5:00 PM',
-this
-)">
+onclick="selectFaculty(3,'Maam Melanie Castillo','Wednesday | 2:00 PM - 5:00 PM',this)">
 <div>
 <b>Ma'am Melanie Castillo</b><br>
-<span class="small">Information Management· Professor</span>
+<span class="small">Information Management · Professor</span>
 </div>
 <span class="badge">Available</span>
 </div>
 
 <div class="faculty"
-onclick="selectFaculty(
-'Maam Marie Nel Velasco',
-'Thursday | 10:00 AM - 12:00 PM',
-this
-)">
+onclick="selectFaculty(4,'Maam Marie Nel Velasco','Thursday | 10:00 AM - 12:00 PM',this)">
 <div>
 <b>Ma'am Marie Nel Velasco</b><br>
 <span class="small">Object-Oriented Programming · Professor</span>
@@ -261,41 +281,57 @@ this
 <form method="POST" action="save_appointment.php">
 
 <label>Selected Faculty</label>
-<input type="text" id="faculty" name="faculty" placeholder="Click faculty on left" readonly required>
+<input type="text" id="faculty_name" name="faculty_name" readonly required>
+<input type="hidden" id="faculty_id" name="faculty_id">
 
 <label>Available Schedule</label>
-<input type="text" id="schedule" name="schedule" placeholder="Select faculty first" readonly>
+<input
+type="text"
+id="schedule"
+name="schedule"
+readonly
+required>
 
 <label>Preferred Date</label>
-<input type="date" name="date" required>
+<input type="date"
+name="appointment_date"
+required>
 
 <label>Concern</label>
-<textarea name="concern" rows="4" placeholder="Describe your concern..." required></textarea>
+<textarea
+name="concern"
+rows="4"
+required></textarea>
 
-<button type="submit">Submit Request</button>
+<button type="submit">
+Submit Request
+</button>
 
 </form>
 
 </div>
 
 </div>
-
 </div>
 
 <script>
+function selectFaculty(id, name, schedule, element){
 
-function selectFaculty(name,schedule,element){
+    let cards = document.querySelectorAll('.faculty');
 
-    document.querySelectorAll('.faculty').forEach(card=>{
+    cards.forEach(function(card){
         card.classList.remove('active');
     });
 
     element.classList.add('active');
 
-    document.getElementById('faculty').value = name;
+    document.getElementById('faculty_id').value = id;
+    document.getElementById('faculty_name').value = name;
     document.getElementById('schedule').value = schedule;
-}
 
+    console.log("Faculty ID:", id);
+    console.log("Faculty Name:", name);
+}
 </script>
 
 </body>

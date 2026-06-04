@@ -70,6 +70,7 @@ width:260px;
 background:#800000;
 color:white;
 padding:20px;
+min-height:100vh;
 }
 
 .sidebar h2{
@@ -91,10 +92,12 @@ margin-bottom:8px;
 background:rgba(255,255,255,.15);
 }
 
+
 .main{
 flex:1;
 padding:30px;
 }
+
 
 .header-card{
 background:white;
@@ -114,6 +117,7 @@ font-size:14px;
 margin-top:5px;
 }
 
+
 .info-box{
 background:#800000;
 color:white;
@@ -132,6 +136,7 @@ font-size:14px;
 margin-top:5px;
 }
 
+
 .card{
 background:white;
 padding:25px;
@@ -145,6 +150,7 @@ margin-bottom:15px;
 color:#800000;
 font-weight:600;
 }
+
 
 .row{
 display:flex;
@@ -189,6 +195,56 @@ button:hover{
 background:#9b0000;
 }
 
+
+@media (max-width: 992px){
+.main{
+padding:20px;
+}
+
+.row{
+flex-direction:column;
+}
+}
+
+
+@media (max-width: 768px){
+
+body{
+flex-direction:column;
+}
+
+.sidebar{
+width:100%;
+min-height:auto;
+text-align:center;
+}
+
+.menu{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:8px;
+}
+
+.menu a{
+flex:1 1 40%;
+text-align:center;
+}
+
+.main{
+padding:15px;
+}
+
+.card{
+padding:18px;
+}
+
+.info-box{
+text-align:center;
+}
+
+}
+
 </style>
 </head>
 
@@ -200,12 +256,13 @@ background:#9b0000;
 <div class="menu">
 <a href="dashboard.php">Dashboard</a>
 <a href="book_appointment.php">Book Appointment</a>
-<a href="my_appointments.php">My Appointments</a>
+<a href="my_appointment.php">My Appointments</a>
 <a href="history.php">History</a>
 <a class="active" href="profile.php">Profile</a>
 <a href="logout.php">Logout</a>
 </div>
 </div>
+
 
 <div class="main">
 
