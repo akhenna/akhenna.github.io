@@ -2,7 +2,6 @@
 session_start();
 include 'db.php';
 
-// 1. VERIFY LOGIN
 if(!isset($_SESSION['faculty_id'])){
     header("Location: faculty_login.php");
     exit();
@@ -10,23 +9,21 @@ if(!isset($_SESSION['faculty_id'])){
 
 $faculty_id = mysqli_real_escape_string($conn, $_SESSION['faculty_id']);
 
-// Kuhanin ang pangalan ng Faculty para sa Topbar base sa session identity
 $faculty_name = "Faculty Member";
 $name_query = mysqli_query($conn, "SELECT faculty_name FROM appointments WHERE faculty_id='$faculty_id' LIMIT 1");
 if($name_row = mysqli_fetch_assoc($name_query)){
     $faculty_name = $name_row['faculty_name'];
 } else {
-    // Fallback names batay sa ID
+   
     if($faculty_id == 1) $faculty_name = "Sir Aris Dela Rea";
     else if($faculty_id == 2) $faculty_name = "Sir Christopher Jay De Claro";
     else if($faculty_id == 3) $faculty_name = "Maam Melanie Castillo";
     else if($faculty_id == 4) $faculty_name = "Maam Marie Nel Velasco";
 }
 
-// Bilang ng Notifications badge
+
 $notif_count = mysqli_num_rows(mysqli_query($conn, "SELECT id FROM appointments WHERE faculty_id='$faculty_id'"));
 
-// 2. QUERY FOR HISTORY (Kukuha ng 'completed' at 'rejected/cancelled' na status kung mayroon man)
 $sql = "SELECT a.*, s.first_name, s.last_name 
         FROM appointments a 
         LEFT JOIN students s ON a.student_id = s.student_id 
@@ -45,9 +42,6 @@ $history_query = mysqli_query($conn, $sql);
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* ==========================================
-           GLOBAL & BASE STYLES
-           ========================================== */
         * {
             margin: 0;
             padding: 0;
@@ -57,14 +51,11 @@ $history_query = mysqli_query($conn, $sql);
 
         body {
             display: flex;
-            background: #f8fafc; /* Modern slate-white hue layout background */
+            background: #f8fafc; 
             min-height: 100vh;
             color: #1e293b;
         }
 
-        /* ==========================================
-           PREMIUM SIDEBAR SYSTEM
-           ========================================== */
         .sidebar {
             width: 270px;
             background: #800000;
@@ -122,9 +113,6 @@ $history_query = mysqli_query($conn, $sql);
             padding-left: 20px;
         }
 
-        /* ==========================================
-           MAIN CONTAINER CONTENT AREA
-           ========================================== */
         .main {
             flex: 1;
             padding: 40px;
@@ -185,9 +173,6 @@ $history_query = mysqli_query($conn, $sql);
             color: #64748b;
         }
 
-        /* ==========================================
-           HISTORY PANEL CONTAINER
-           ========================================== */
         .panel {
             background: white;
             padding: 35px 28px;
@@ -197,9 +182,6 @@ $history_query = mysqli_query($conn, $sql);
             width: 100%;
         }
 
-        /* ==========================================
-           EXACT MATCH READDY.AI ITEM ROW STYLE
-           ========================================== */
         .history-item {
             display: flex;
             align-items: center;
@@ -223,11 +205,11 @@ $history_query = mysqli_query($conn, $sql);
             gap: 20px;
         }
 
-        /* User Icon/Avatar Placeholder Box */
+      
         .avatar-box {
             width: 48px;
             height: 48px;
-            background: #f0fdf4; /* Light green block base color */
+            background: #f0fdf4; 
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -256,9 +238,6 @@ $history_query = mysqli_query($conn, $sql);
             font-size: 12px;
         }
 
-        /* ==========================================
-           STATUS BADGES SYSTEM
-           ========================================== */
         .status {
             font-size: 12px;
             padding: 5px 14px;
@@ -283,9 +262,6 @@ $history_query = mysqli_query($conn, $sql);
             font-size: 14px;
         }
 
-        /* ==========================================
-           RESPONSIVE INTERFACE LAYOUTS
-           ========================================== */
         @media (max-width: 1024px) {
             .main { padding: 30px; }
         }
@@ -355,7 +331,6 @@ $history_query = mysqli_query($conn, $sql);
                 <?php while($row = mysqli_fetch_assoc($history_query)): ?>
                     
                     <?php 
-                        // Gumawa ng initials para sa Profile Icon Box base sa pangalan ng estudyante
                         $initials = "S";
                         if(!empty($row['first_name'])) {
                             $initials = strtoupper(substr($row['first_name'], 0, 1));

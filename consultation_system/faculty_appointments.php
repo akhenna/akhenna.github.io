@@ -2,7 +2,6 @@
 session_start();
 include 'db.php';
 
-// 1. VERIFY LOGIN
 if(!isset($_SESSION['faculty_id'])){
     header("Location: faculty_login.php");
     exit();
@@ -10,26 +9,22 @@ if(!isset($_SESSION['faculty_id'])){
 
 $faculty_id = mysqli_real_escape_string($conn, $_SESSION['faculty_id']);
 
-// Kuhanin ang pangalan ng Faculty para sa Topbar base sa session identity
 $faculty_name = "Faculty Member";
 $name_query = mysqli_query($conn, "SELECT faculty_name FROM appointments WHERE faculty_id='$faculty_id' LIMIT 1");
 if($name_row = mysqli_fetch_assoc($name_query)){
     $faculty_name = $name_row['faculty_name'];
 } else {
-    // Fallback names kung walang appointment history pa ang account
+   
     if($faculty_id == 1) $faculty_name = "Sir Aris Dela Rea";
     else if($faculty_id == 2) $faculty_name = "Sir Christopher Jay De Claro";
     else if($faculty_id == 3) $faculty_name = "Maam Melanie Castillo";
     else if($faculty_id == 4) $faculty_name = "Maam Marie Nel Velasco";
 }
 
-// Bilang ng Notifications badge
 $notif_count = mysqli_num_rows(mysqli_query($conn, "SELECT id FROM appointments WHERE faculty_id='$faculty_id'"));
 
-// 2. FILTER MANAGEMENT (All, Pending, Approved, Completed)
 $current_filter = isset($_GET['filter']) ? $_GET['filter'] : 'All';
 
-// SQL Query na naka-JOIN sa students table para makuha ang kumpletong detalye ng estudyante
 $sql = "SELECT a.*, s.first_name, s.last_name, s.course, s.year_level 
         FROM appointments a 
         LEFT JOIN students s ON a.student_id = s.student_id 
@@ -53,9 +48,7 @@ $appointments_query = mysqli_query($conn, $sql);
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* ==========================================
-           GLOBAL & BASE STYLES
-           ========================================== */
+    
         * {
             margin: 0;
             padding: 0;
@@ -65,14 +58,12 @@ $appointments_query = mysqli_query($conn, $sql);
 
         body {
             display: flex;
-            background: #f8fafc; /* Modern slate-white layout background */
+            background: #f8fafc; 
             min-height: 100vh;
             color: #1e293b;
         }
 
-        /* ==========================================
-           PREMIUM SIDEBAR SYSTEM
-           ========================================== */
+     
         .sidebar {
             width: 270px;
             background: #800000;
@@ -130,9 +121,7 @@ $appointments_query = mysqli_query($conn, $sql);
             padding-left: 20px;
         }
 
-        /* ==========================================
-           MAIN CONTAINER CONTENT AREA
-           ========================================== */
+
         .main {
             flex: 1;
             padding: 40px;
@@ -186,9 +175,7 @@ $appointments_query = mysqli_query($conn, $sql);
             color: #64748b;
         }
 
-        /* ==========================================
-           FILTER TABS SYSTEM
-           ========================================== */
+    
         .filter-tabs {
             display: flex;
             gap: 10px;
@@ -218,9 +205,7 @@ $appointments_query = mysqli_query($conn, $sql);
             box-shadow: 0 4px 12px rgba(128, 0, 0, 0.15);
         }
 
-        /* ==========================================
-           PANEL AND CONTENT CARD BLOCK
-           ========================================== */
+       
         .panel {
             background: white;
             padding: 28px;
@@ -239,9 +224,7 @@ $appointments_query = mysqli_query($conn, $sql);
             padding-bottom: 12px;
         }
 
-        /* ==========================================
-           LIST CARDS ITEMS COMPONENTS
-           ========================================== */
+    
         .item {
             display: flex;
             justify-content: space-between;
@@ -255,7 +238,6 @@ $appointments_query = mysqli_query($conn, $sql);
             border-left: 4px solid #cbd5e1;
         }
 
-        /* Dynamic left-border lines based on status */
         .item:has(.status.pending) { border-left-color: #f59e0b; }
         .item:has(.status.approved) { border-left-color: #38bdf8; }
         .item:has(.status.completed) { border-left-color: #4ade80; }
@@ -267,9 +249,7 @@ $appointments_query = mysqli_query($conn, $sql);
             border-color: #e2e8f0;
         }
 
-        /* ==========================================
-           BADGES STATUS COLORS
-           ========================================== */
+     
         .status {
             font-size: 12px;
             padding: 6px 14px;
@@ -304,9 +284,6 @@ $appointments_query = mysqli_query($conn, $sql);
             font-size: 14px;
         }
 
-        /* ==========================================
-           RESPONSIVE INTERFACE LAYOUTS
-           ========================================== */
         @media (max-width: 1024px) {
             .main { padding: 30px; }
         }

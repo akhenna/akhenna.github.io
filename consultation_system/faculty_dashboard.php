@@ -2,7 +2,7 @@
 session_start();
 include 'db.php';
 
-// 1. VERIFY LOGIN
+
 if(!isset($_SESSION['faculty_id'])){
     header("Location: faculty_login.php");
     exit();
@@ -10,7 +10,6 @@ if(!isset($_SESSION['faculty_id'])){
 
 $faculty_id = mysqli_real_escape_string($conn, $_SESSION['faculty_id']); 
 
-/* 2. REAL-TIME STATS */
 $total_query = mysqli_query($conn, "SELECT id FROM appointments WHERE faculty_id='$faculty_id'");
 $total = mysqli_num_rows($total_query);
 
@@ -23,7 +22,7 @@ $approved = mysqli_num_rows($approved_query);
 $completed_query = mysqli_query($conn, "SELECT id FROM appointments WHERE faculty_id='$faculty_id' AND status='completed'");
 $completed = mysqli_num_rows($completed_query);
 
-/* 3. PENDING REQUESTS LIST */
+
 $pendingRequests = mysqli_query($conn, "
     SELECT a.*, s.first_name, s.last_name, s.course, s.year_level
     FROM appointments a
@@ -33,7 +32,6 @@ $pendingRequests = mysqli_query($conn, "
     LIMIT 5
 ");
 
-/* 4. NOTIFICATIONS LIST */
 $notifications = mysqli_query($conn, "
     SELECT * FROM appointments
     WHERE faculty_id='$faculty_id'
@@ -42,7 +40,7 @@ $notifications = mysqli_query($conn, "
 ");
 $notif_count = mysqli_num_rows($notifications);
 
-/* 5. GET FACULTY NAME */
+
 $faculty_name = "Faculty Member";
 $name_query = mysqli_query($conn, "SELECT faculty_name FROM appointments WHERE faculty_id='$faculty_id' LIMIT 1");
 if($name_row = mysqli_fetch_assoc($name_query)){
@@ -59,9 +57,6 @@ if($name_row = mysqli_fetch_assoc($name_query)){
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* ==========================================
-           GLOBAL & BASE STYLES
-           ========================================== */
         * {
             margin: 0;
             padding: 0;
@@ -71,14 +66,11 @@ if($name_row = mysqli_fetch_assoc($name_query)){
 
         body {
             display: flex;
-            background: #f8fafc; /* Modern slate-white layout background */
+            background: #f8fafc; 
             min-height: 100vh;
             color: #1e293b;
         }
 
-        /* ==========================================
-           PREMIUM SIDEBAR SYSTEM
-           ========================================== */
         .sidebar {
             width: 270px;
             background: #800000;
@@ -136,9 +128,6 @@ if($name_row = mysqli_fetch_assoc($name_query)){
             padding-left: 20px;
         }
 
-        /* ==========================================
-           MAIN CONTAINER CONTENT AREA
-           ========================================== */
         .main {
             flex: 1;
             padding: 40px;
@@ -188,9 +177,6 @@ if($name_row = mysqli_fetch_assoc($name_query)){
             color: #64748b;
         }
 
-        /* ==========================================
-           DASHBOARD STATS BLOCK CARDS
-           ========================================== */
         .stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -220,9 +206,6 @@ if($name_row = mysqli_fetch_assoc($name_query)){
             font-weight: 500;
         }
 
-        /* ==========================================
-           CONTAINER GRID PANELS
-           ========================================== */
         .grid {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -246,9 +229,7 @@ if($name_row = mysqli_fetch_assoc($name_query)){
             padding-bottom: 12px;
         }
 
-        /* ==========================================
-           LIST CARDS ITEMS COMPONENTS
-           ========================================== */
+       
         .item {
             display: flex;
             justify-content: space-between;
@@ -263,7 +244,7 @@ if($name_row = mysqli_fetch_assoc($name_query)){
         }
 
         .panel .item:has(.status.pending) {
-            border-left-color: #f59e0b; /* Elegant orange indicator for pending entries */
+            border-left-color: #f59e0b; 
         }
 
         .item:hover {
@@ -273,9 +254,7 @@ if($name_row = mysqli_fetch_assoc($name_query)){
             border-color: #e2e8f0;
         }
 
-        /* ==========================================
-           BADGES STATUS COLORS
-           ========================================== */
+
         .status {
             font-size: 12px;
             padding: 6px 14px;
@@ -308,9 +287,6 @@ if($name_row = mysqli_fetch_assoc($name_query)){
             font-size: 14px;
         }
 
-        /* ==========================================
-           SIDE COMPONENT MANAGE BOX
-           ========================================== */
         .manage {
             margin-top: 25px;
             background: linear-gradient(135deg, #800000 0%, #4a0000 100%);
@@ -354,9 +330,6 @@ if($name_row = mysqli_fetch_assoc($name_query)){
             background: #fff5f5;
         }
 
-        /* ==========================================
-           RESPONSIVE INTERFACE LAYOUTS
-           ========================================== */
         @media (max-width: 1024px) {
             .main { padding: 30px; }
             .stats { grid-template-columns: repeat(2, 1fr); gap: 15px; }
