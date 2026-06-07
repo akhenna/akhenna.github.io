@@ -237,19 +237,19 @@ align-items:flex-start;
 <br>
 
 <div class="faculty"
-onclick="selectFaculty(1,'Sir Christopher Jay De Claro','Monday | 1:00 PM - 3:00 PM',this)">
+onclick="selectFaculty(1,'Sir Aris Dela Rea','Tuesday | 9:00 AM - 12:00 PM',this)">
 <div>
-<b>Sir Christopher Jay De Claro</b><br>
-<span class="small">Web Development · Professor</span>
+<b>Sir Aris Dela Rea</b><br>
+<span class="small">System Administrator · Professor</span>
 </div>
 <span class="badge">Available</span>
 </div>
 
 <div class="faculty"
-onclick="selectFaculty(2,'Sir Aris Dela Rea','Tuesday | 9:00 AM - 12:00 PM',this)">
+onclick="selectFaculty(2,'Sir Christopher Jay De Claro','Monday | 1:00 PM - 3:00 PM',this)">
 <div>
-<b>Sir Aris Dela Rea</b><br>
-<span class="small">System Administrator · Professor</span>
+<b>Sir Christopher Jay De Claro</b><br>
+<span class="small">Web Development · Professor</span>
 </div>
 <span class="badge">Available</span>
 </div>

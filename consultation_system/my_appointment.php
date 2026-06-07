@@ -22,8 +22,8 @@ ORDER BY created_at DESC
 ");
 
 $facultyNames = [
-    1 => 'Sir Christopher Jay De Claro',
-    2 => 'Sir Aris Dela Rea',
+    1 => 'Sir Aris Dela Rea',
+    2 => 'Sir Christopher Jay De Claro',
     3 => 'Maam Melanie Castillo',
     4 => 'Maam Marie Nel Velasco'
 ];
