@@ -64,7 +64,7 @@ if(isset($_POST['login'])){
 <title>Login</title>
 
 <style>
- body {
+body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: #f3f4f6;
@@ -83,7 +83,6 @@ if(isset($_POST['login'])){
     text-align: center;
 }
 
-
 .logo {
     width: 50px;
     height: 50px;
@@ -97,6 +96,7 @@ if(isset($_POST['login'])){
     font-size: 20px;
     font-weight: bold;
 }
+
 .tabs {
     display: flex;
     justify-content: space-between;
@@ -125,7 +125,6 @@ if(isset($_POST['login'])){
     border-color: #800000;
 }
 
-
 h2 {
     margin: 15px 0 5px;
 }
@@ -136,7 +135,6 @@ h2 {
     margin-bottom: 18px;
 }
 
-
 input {
     width: 100%;
     padding: 11px;
@@ -146,7 +144,6 @@ input {
     font-size: 14px;
     box-sizing: border-box;
 }
-
 
 button.signin-btn {
     width: 60%;              
@@ -165,20 +162,17 @@ button.signin-btn:hover {
     background: #a00000;
 }
 
-
 form {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-
 .error {
     color: red;
     font-size: 13px;
     margin-top: 10px;
 }
-
 
 .footer {
     margin-top: 15px;
@@ -204,13 +198,12 @@ form {
 
     <?php if(isset($error)) echo "<p class='error'>$error</p>"; ?>
 
-   <div class="tabs">
-    <button type="button" class="tab active" onclick="setRole('student', this)">Student</button>
-    <button type="button" class="tab" onclick="setRole('faculty', this)">Faculty</button>
-    <button type="button" class="tab" onclick="setRole('admin', this)">Admin</button>
-</div>
+    <div class="tabs">
+        <button type="button" class="tab active" onclick="setRole('student', this)">Student</button>
+        <button type="button" class="tab" onclick="setRole('faculty', this)">Faculty</button>
+        <button type="button" class="tab" onclick="setRole('admin', this)">Admin</button>
+    </div>
 
- 
     <form method="POST">
 
         <input type="hidden" name="role" id="role" value="student">
@@ -233,14 +226,15 @@ form {
 </div>
 
 <script>
-function setRole(role){
+
+function setRole(role, element){
 
     document.getElementById("role").value = role;
 
     let tabs = document.querySelectorAll(".tab");
     tabs.forEach(t => t.classList.remove("active"));
 
-    event.target.classList.add("active");
+    element.classList.add("active");
 }
 </script>
 

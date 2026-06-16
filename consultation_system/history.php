@@ -8,14 +8,14 @@ if(!isset($_SESSION['student_id'])){
 }
 
 $student_id = $_SESSION['student_id'];
+$query = "SELECT a.*, f.full_name 
+          FROM appointments a 
+          LEFT JOIN faculty f ON a.faculty_id = f.faculty_id 
+          WHERE a.student_id='$student_id' 
+          AND a.status='completed' 
+          ORDER BY a.appointment_date DESC";
 
-$history = mysqli_query(
-    $conn,
-    "SELECT * FROM appointments
-     WHERE student_id='$student_id'
-     AND status='completed'
-     ORDER BY appointment_date DESC"
-);
+$history = mysqli_query($conn, $query);
 ?>
 
 <!DOCTYPE html>
@@ -24,233 +24,195 @@ $history = mysqli_query(
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>History | PUP AppointEd</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+    *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
 }
 
 body{
-display:flex;
-background:#f6f7fb;
-min-height:100vh;
+    display:flex;
+    background:#f6f7fb;
+    min-height:100vh;
 }
-
-
 .sidebar{
-width:260px;
-background:#800000;
-color:white;
-min-height:100vh;
-padding:20px;
+    width:260px;
+    background:#800000;
+    color:#fff;
+    min-height:100vh;
+    padding:20px;
 }
 
 .sidebar h2{
-font-size:18px;
-margin-bottom:30px;
+    font-size:18px;
+    margin-bottom:30px;
 }
 
 .menu a{
-display:block;
-color:white;
-text-decoration:none;
-padding:12px;
-border-radius:8px;
-margin-bottom:8px;
+    display:block;
+    color:#fff;
+    text-decoration:none;
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:8px;
+    transition:.2s;
 }
 
 .menu a:hover,
 .menu a.active{
-background:rgba(255,255,255,.15);
+    background:rgba(255,255,255,.15);
 }
 
 .main{
-flex:1;
-padding:25px;
+    flex:1;
+    padding:25px;
 }
 
 .topbar{
-margin-bottom:20px;
+    margin-bottom:20px;
 }
 
 .topbar h1{
-color:#800000;
+    color:#800000;
+    font-size:26px;
 }
 
 .small{
-font-size:13px;
-color:#666;
+    font-size:13px;
+    color:#666;
+    margin-top:3px;
 }
 
 .history-container{
-display:grid;
-grid-template-columns:1fr;
-gap:15px;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:15px;
 }
 
-
 .history-card{
-background:white;
-padding:20px;
-border-radius:12px;
-border:1px solid #eee;
-transition:.3s;
+    background:#fff;
+    padding:20px;
+    border-radius:12px;
+    border:1px solid #eee;
+    transition:.3s;
 }
 
 .history-card:hover{
-box-shadow:0 5px 15px rgba(0,0,0,.08);
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
 }
 
 .history-card h3{
-color:#800000;
-margin-bottom:10px;
+    color:#800000;
+    margin-bottom:10px;
 }
 
 .history-card p{
-color:#555;
-font-size:14px;
-margin-bottom:5px;
+    color:#555;
+    font-size:14px;
+    margin-bottom:5px;
 }
-
 
 .completed-badge{
-display:inline-block;
-margin-top:10px;
-padding:6px 12px;
-border-radius:20px;
-background:#d4f5dd;
-color:#15803d;
-font-size:12px;
-font-weight:600;
+    display:inline-block;
+    margin-top:10px;
+    padding:6px 12px;
+    border-radius:20px;
+    background:#d4f5dd;
+    color:#15803d;
+    font-size:12px;
+    font-weight:600;
 }
-
-
 .empty{
-background:white;
-padding:30px;
-border-radius:12px;
-text-align:center;
-color:#777;
-border:1px solid #eee;
+    background:#fff;
+    padding:30px;
+    border-radius:12px;
+    text-align:center;
+    color:#777;
+    border:1px solid #eee;
 }
 
 @media (max-width: 992px){
-.main{
-padding:20px;
-}
+    .main{
+        padding:20px;
+    }
 }
 
 @media (max-width: 768px){
 
-body{
-flex-direction:column;
-}
+    body{
+        flex-direction:column;
+    }
 
-.sidebar{
-width:100%;
-min-height:auto;
-text-align:center;
-}
+    .sidebar{
+        width:100%;
+        min-height:auto;
+        text-align:center;
+    }
 
-.menu{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:8px;
-}
+    .menu{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:8px;
+    }
 
-.menu a{
-flex:1 1 40%;
-text-align:center;
-}
+    .menu a{
+        flex:1 1 40%;
+        text-align:center;
+    }
 
-.main{
-padding:15px;
-}
+    .main{
+        padding:15px;
+    }
 
-.history-card{
-padding:15px;
+    .history-card{
+        padding:18px;
+    }
 }
-
-.history-card h3{
-font-size:16px;
-}
-
-.history-card p{
-font-size:13px;
-}
-
-.completed-badge{
-font-size:11px;
-}
-
-}
-
 </style>
 </head>
-
 <body>
 
-
 <div class="sidebar">
-
-<h2>PUP AppointEd</h2>
-
-<div class="menu">
-<a href="dashboard.php">Dashboard</a>
-<a href="book_appointment.php">Book Appointment</a>
-<a href="my_appointment.php">My Appointments</a>
-<a class="active" href="history.php">History</a>
-<a href="profile.php">Profile</a>
-<a href="logout.php">Logout</a>
-</div>
-
+    <h2>PUP AppointEd</h2>
+    <div class="menu">
+        <a href="dashboard.php">Dashboard</a>
+        <a href="book_appointment.php">Book Appointment</a>
+        <a href="my_appointment.php">My Appointments</a>
+        <a class="active" href="history.php">History</a>
+        <a href="profile.php">Profile</a>
+        <a href="logout.php">Logout</a>
+    </div>
 </div>
 
 <div class="main">
-
-<div class="topbar">
-<h1>Consultation History</h1>
-<p class="small">Completed appointments only</p>
-</div>
-
-<div class="history-container">
-
-<?php if(mysqli_num_rows($history) > 0): ?>
-
-    <?php while($row = mysqli_fetch_assoc($history)): ?>
-
-    <div class="history-card">
-
-        <h3><?= htmlspecialchars($row['concern']); ?></h3>
-
-        <p><b>Faculty:</b> <?= htmlspecialchars($row['faculty']); ?></p>
-        <p><b>Schedule:</b> <?= htmlspecialchars($row['schedule']); ?></p>
-        <p><b>Date:</b> <?= date('F d, Y', strtotime($row['appointment_date'])); ?></p>
-
-        <span class="completed-badge">Completed</span>
-
+    <div class="topbar">
+        <h1>Consultation History</h1>
+        <p class="small">Completed appointments only</p>
     </div>
 
-    <?php endwhile; ?>
+    <div class="history-container">
+        <?php if(mysqli_num_rows($history) > 0): ?>
+            <?php while($row = mysqli_fetch_assoc($history)): ?>
+                <div class="history-card">
+                    <h3><?= htmlspecialchars($row['concern'] ?? 'No Concern'); ?></h3>
+                    
+                    <p><b>Faculty:</b> <?= htmlspecialchars($row['full_name'] ?? 'Not Assigned'); ?></p>
+                    
+                    <p><b>Schedule:</b> <?= htmlspecialchars($row['schedule'] ?? 'Not set'); ?></p>
+                    <p><b>Date:</b> <?= isset($row['appointment_date']) ? date('F d, Y', strtotime($row['appointment_date'])) : 'N/A'; ?></p>
 
-<?php else: ?>
-
-    <div class="empty">
-        No consultation history yet.
+                    <span class="completed-badge">Completed</span>
+                </div>
+            <?php endwhile; ?>
+        <?php else: ?>
+            <div class="empty">No consultation history yet.</div>
+        <?php endif; ?>
     </div>
-
-<?php endif; ?>
-
-</div>
-
 </div>
 
 </body>
-</html> 
+</html>

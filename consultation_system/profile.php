@@ -10,7 +10,7 @@ if(!isset($_SESSION['student_id'])){
 $id = $_SESSION['student_id'];
 
 $stmt = $conn->prepare("SELECT * FROM students WHERE student_id = ?");
-$stmt->bind_param("i", $id);
+$stmt->bind_param("s", $id);
 $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
@@ -33,7 +33,7 @@ if(isset($_POST['update'])){
         WHERE student_id=?
     ");
 
-    $stmt->bind_param("sssssi", $fname, $lname, $phone, $course, $year, $id);
+    $stmt->bind_param("ssssss", $fname, $lname, $phone, $course, $year, $id);
     $stmt->execute();
 
     header("Location: profile.php");
@@ -51,276 +51,250 @@ if(isset($_POST['update'])){
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
 }
 
-body{
-display:flex;
-background:#f6f7fb;
-min-height:100vh;
+body {
+    display:flex;
+    background:#f6f7fb;
+    min-height:100vh;
 }
 
-.sidebar{
-width:260px;
-background:#800000;
-color:white;
-padding:20px;
-min-height:100vh;
+.sidebar {
+    width:260px;
+    background:#800000;
+    color:white;
+    padding:20px;
+    min-height:100vh;
 }
 
-.sidebar h2{
-font-size:18px;
-margin-bottom:30px;
+.sidebar h2 {
+    font-size:18px;
+    margin-bottom:30px;
 }
 
-.menu a{
-display:block;
-color:white;
-text-decoration:none;
-padding:12px;
-border-radius:8px;
-margin-bottom:8px;
+.menu a {
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:8px;
 }
 
 .menu a:hover,
-.menu a.active{
-background:rgba(255,255,255,.15);
+.menu a.active {
+    background:rgba(255,255,255,.15);
 }
 
-
-.main{
-flex:1;
-padding:30px;
+.main {
+    flex:1;
+    padding:30px;
 }
 
-
-.header-card{
-background:white;
-padding:20px;
-border-radius:12px;
-margin-bottom:20px;
-box-shadow:0 3px 10px rgba(0,0,0,.08);
+.header-card {
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
 }
 
-.header-card h2{
-color:#800000;
+.header-card h2 {
+    color:#800000;
 }
 
-.header-card p{
-color:#666;
-font-size:14px;
-margin-top:5px;
+.header-card p {
+    color:#666;
+    font-size:14px;
+    margin-top:5px;
 }
 
-
-.info-box{
-background:#800000;
-color:white;
-padding:20px;
-border-radius:12px;
-margin-bottom:20px;
+.info-box {
+    background:#800000;
+    color:white;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:20px;
 }
 
-.info-box h3{
-font-size:18px;
+.info-box h3 {
+    font-size:18px;
 }
 
-.info-box p{
-opacity:.9;
-font-size:14px;
-margin-top:5px;
+.info-box p {
+    opacity:.9;
+    font-size:14px;
+    margin-top:5px;
 }
 
-
-.card{
-background:white;
-padding:25px;
-border-radius:12px;
-box-shadow:0 3px 10px rgba(0,0,0,.08);
+.card {
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
 }
 
-.form-title{
-font-size:16px;
-margin-bottom:15px;
-color:#800000;
-font-weight:600;
+.form-title {
+    font-size:16px;
+    margin-bottom:15px;
+    color:#800000;
+    font-weight:600;
 }
 
-
-.row{
-display:flex;
-gap:15px;
+.row {
+    display:flex;
+    gap:15px;
 }
 
-.form-group{
-width:100%;
-margin-bottom:15px;
+.form-group {
+    width:100%;
+    margin-bottom:15px;
 }
 
-label{
-font-size:13px;
-color:#555;
+label {
+    font-size:13px;
+    color:#555;
 }
 
-input, select{
-width:100%;
-padding:12px;
-margin-top:6px;
-border-radius:8px;
-border:1px solid #ddd;
-outline:none;
+input, select {
+    width:100%;
+    padding:12px;
+    margin-top:6px;
+    border-radius:8px;
+    border:1px solid #ddd;
+    outline:none;
 }
 
-input:focus, select:focus{
-border-color:#800000;
+input:focus, select:focus {
+    border-color:#800000;
 }
 
-button{
-width:100%;
-padding:12px;
-background:#800000;
-color:white;
-border:none;
-border-radius:10px;
-font-weight:600;
-cursor:pointer;
+button {
+    width:100%;
+    padding:12px;
+    background:#800000;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-weight:600;
+    cursor:pointer;
 }
 
-button:hover{
-background:#9b0000;
+button:hover {
+    background:#9b0000;
 }
-
 
 @media (max-width: 992px){
-.main{
-padding:20px;
+    .main {
+        padding:20px;
+    }
+    .row {
+        flex-direction:column;
+    }
 }
-
-.row{
-flex-direction:column;
-}
-}
-
 
 @media (max-width: 768px){
-
-body{
-flex-direction:column;
+    body {
+        flex-direction:column;
+    }
+    .sidebar {
+        width:100%;
+        min-height:auto;
+        text-align:center;
+    }
+    .menu {
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:8px;
+    }
+    .menu a {
+        flex:1 1 40%;
+        text-align:center;
+    }
+    .main {
+        padding:15px;
+    }
+    .card {
+        padding:18px;
+    }
+    .info-box {
+        text-align:center;
+    }
 }
-
-.sidebar{
-width:100%;
-min-height:auto;
-text-align:center;
-}
-
-.menu{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:8px;
-}
-
-.menu a{
-flex:1 1 40%;
-text-align:center;
-}
-
-.main{
-padding:15px;
-}
-
-.card{
-padding:18px;
-}
-
-.info-box{
-text-align:center;
-}
-
-}
-
 </style>
 </head>
 
 <body>
 
 <div class="sidebar">
-<h2>PUP AppointEd</h2>
-
-<div class="menu">
-<a href="dashboard.php">Dashboard</a>
-<a href="book_appointment.php">Book Appointment</a>
-<a href="my_appointment.php">My Appointments</a>
-<a href="history.php">History</a>
-<a class="active" href="profile.php">Profile</a>
-<a href="logout.php">Logout</a>
+    <h2>PUP AppointEd</h2>
+    <div class="menu">
+        <a href="dashboard.php">Dashboard</a>
+        <a href="book_appointment.php">Book Appointment</a>
+        <a href="my_appointment.php">My Appointments</a>
+        <a href="history.php">History</a>
+        <a class="active" href="profile.php">Profile</a>
+        <a href="logout.php">Logout</a>
+    </div>
 </div>
-</div>
-
 
 <div class="main">
+    <div class="header-card">
+        <h2>Profile Settings</h2>
+        <p>Manage your account information</p>
+    </div>
 
-<div class="header-card">
-<h2>Profile Settings</h2>
-<p>Manage your account information</p>
-</div>
+    <div class="info-box">
+        <h3><?= htmlspecialchars($user['first_name'].' '.$user['last_name']); ?></h3>
+        <p><?= htmlspecialchars($user['email']); ?></p>
+        <p>Student ID: <?= htmlspecialchars($user['student_id']); ?></p>
+    </div>
 
-<div class="info-box">
-<h3><?= $user['first_name'].' '.$user['last_name']; ?></h3>
-<p><?= $user['email']; ?></p>
-<p>Student ID: <?= $user['student_id']; ?></p>
-</div>
+    <div class="card">
+        <div class="form-title">Update Information</div>
 
-<div class="card">
+        <form method="POST">
+            <div class="row">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" name="first_name" value="<?= htmlspecialchars($user['first_name']) ?>" required>
+                </div>
 
-<div class="form-title">Update Information</div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" name="last_name" value="<?= htmlspecialchars($user['last_name']) ?>" required>
+                </div>
+            </div>
 
-<form method="POST">
+            <div class="form-group">
+                <label>Phone</label>
+                <input type="text" name="phone" value="<?= htmlspecialchars($user['phone']) ?>">
+            </div>
 
-<div class="row">
-<div class="form-group">
-<label>First Name</label>
-<input type="text" name="first_name" value="<?= $user['first_name'] ?>" required>
-</div>
+            <div class="form-group">
+                <label>Course</label>
+                <input type="text" name="course" value="<?= htmlspecialchars($user['course']) ?>">
+            </div>
 
-<div class="form-group">
-<label>Last Name</label>
-<input type="text" name="last_name" value="<?= $user['last_name'] ?>" required>
-</div>
-</div>
+            <div class="form-group">
+                <label>Year Level</label>
+                <select name="year_level">
+                    <option <?= $user['year_level']=="1st Year"?'selected':'' ?>>1st Year</option>
+                    <option <?= $user['year_level']=="2nd Year"?'selected':'' ?>>2nd Year</option>
+                    <option <?= $user['year_level']=="3rd Year"?'selected':'' ?>>3rd Year</option>
+                    <option <?= $user['year_level']=="4th Year"?'selected':'' ?>>4th Year</option>
+                </select>
+            </div>
 
-<div class="form-group">
-<label>Phone</label>
-<input type="text" name="phone" value="<?= $user['phone'] ?>">
-</div>
-
-<div class="form-group">
-<label>Course</label>
-<input type="text" name="course" value="<?= $user['course'] ?>">
-</div>
-
-<div class="form-group">
-<label>Year Level</label>
-<select name="year_level">
-<option <?= $user['year_level']=="1st Year"?'selected':'' ?>>1st Year</option>
-<option <?= $user['year_level']=="2nd Year"?'selected':'' ?>>2nd Year</option>
-<option <?= $user['year_level']=="3rd Year"?'selected':'' ?>>3rd Year</option>
-<option <?= $user['year_level']=="4th Year"?'selected':'' ?>>4th Year</option>
-</select>
-</div>
-
-<button type="submit" name="update">Save Changes</button>
-
-</form>
-
-</div>
-
+            <button type="submit" name="update">Save Changes</button>
+        </form>
+    </div>
 </div>
 
 </body>

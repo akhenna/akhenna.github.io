@@ -297,12 +297,15 @@
             <h3>Appointment Overview</h3>
             <p>View and manage all appointments</p>
         </div>
+<div class="admin-card">
+    <div class="admin-icon"></div>
+    <h3>Reports & Analytics</h3>
+    <p>Generate insights and reports</p>
 
-        <div class="admin-card">
-            <div class="admin-icon"></div>
-            <h3>Reports & Analytics</h3>
-            <p>Generate insights and reports</p>
-        </div>
+    <a href="visualization.php" class="visualization-btn">
+        View Visualization
+    </a>
+</div>
 
         <div class="admin-card">
             <div class="admin-icon"></div>

@@ -9,24 +9,23 @@ if(!isset($_SESSION['student_id'])){
 
 $student_id = $_SESSION['student_id'];
 
-$userQuery = mysqli_query($conn,
-"SELECT * FROM students WHERE student_id='$student_id'");
-
+$userQuery = mysqli_query($conn, "SELECT * FROM students WHERE student_id='$student_id'");
 $user = mysqli_fetch_assoc($userQuery);
 
 $name = $user['first_name'].' '.$user['last_name'];
 
-$total = mysqli_num_rows(mysqli_query($conn,
-"SELECT id FROM appointments WHERE student_id='$student_id'"));
 
-$pending = mysqli_num_rows(mysqli_query($conn,
-"SELECT id FROM appointments WHERE student_id='$student_id' AND status='pending'"));
+$total = mysqli_num_rows(mysqli_query($conn, 
+    "SELECT id FROM appointments WHERE student_id='$student_id' AND student_id != '' AND student_id != '0' AND student_id IS NOT NULL"));
 
-$approved = mysqli_num_rows(mysqli_query($conn,
-"SELECT id FROM appointments WHERE student_id='$student_id' AND status='approved'"));
+$pending = mysqli_num_rows(mysqli_query($conn, 
+    "SELECT id FROM appointments WHERE student_id='$student_id' AND status='pending' AND student_id != '' AND student_id != '0' AND student_id IS NOT NULL"));
 
-$completed = mysqli_num_rows(mysqli_query($conn,
-"SELECT id FROM appointments WHERE student_id='$student_id' AND status='completed'"));
+$approved = mysqli_num_rows(mysqli_query($conn, 
+    "SELECT id FROM appointments WHERE student_id='$student_id' AND status='approved' AND student_id != '' AND student_id != '0' AND student_id IS NOT NULL"));
+
+$completed = mysqli_num_rows(mysqli_query($conn, 
+    "SELECT id FROM appointments WHERE student_id='$student_id' AND status='completed' AND student_id != '' AND student_id != '0' AND student_id IS NOT NULL"));
 ?>
 
 <!DOCTYPE html>
@@ -80,17 +79,14 @@ body{
     background:rgba(255,255,255,.15);
 }
 
-
 .main{
     flex:1;
     padding:25px;
 }
 
-
 .topbar h1{
     color:#800000;
 }
-
 
 .user{
     display:flex;
@@ -111,7 +107,6 @@ body{
     font-weight:700;
 }
 
-
 .cards{
     display:grid;
     grid-template-columns:repeat(4,1fr);
@@ -130,7 +125,6 @@ body{
     color:#800000;
     font-size:28px;
 }
-
 
 .content{
     margin-top:20px;
@@ -151,7 +145,6 @@ body{
     margin-bottom:15px;
 }
 
-
 .appointment{
     display:flex;
     justify-content:space-between;
@@ -168,7 +161,6 @@ body{
 .pending{background:#fff4d6;color:#d97706;}
 .approved{background:#dcfce7;color:#15803d;}
 .completed{background:#dbeafe;color:#1d4ed8;}
-
 
 .cta{
     margin-top:20px;
@@ -192,65 +184,52 @@ body{
     font-weight:600;
 }
 
-
 @media (max-width: 992px){
     .cards{
         grid-template-columns:repeat(2,1fr);
     }
-
     .content{
         grid-template-columns:1fr;
     }
 }
 
-
 @media (max-width: 768px){
-
     body{
         flex-direction:column;
     }
-
     .sidebar{
         width:100%;
         min-height:auto;
         text-align:center;
     }
-
     .menu{
         display:flex;
         flex-wrap:wrap;
         justify-content:center;
         gap:8px;
     }
-
     .menu a{
         flex:1 1 40%;
         text-align:center;
     }
-
     .main{
         padding:15px;
     }
-
     .cards{
         grid-template-columns:1fr;
     }
-
     .cta{
         flex-direction:column;
         text-align:center;
     }
 }
 </style>
-
 </head>
 
 <body>
 
-
 <div class="sidebar">
     <h2>PUP AppointEd</h2>
-
     <div class="menu">
         <a class="active" href="dashboard.php">Dashboard</a>
         <a href="book_appointment.php">Book Appointment</a>
@@ -262,47 +241,38 @@ body{
 </div>
 
 <div class="main">
-
     <div class="topbar">
         <h1>Student Dashboard</h1>
-
         <div class="user">
             <div class="avatar">
-                <?= strtoupper(substr($name,0,1)) ?>
+                <?= strtoupper(substr(trim($name),0,1)) ?>
             </div>
             <div>
-                <strong><?= $name ?></strong>
+                <strong><?= htmlspecialchars($name) ?></strong>
             </div>
         </div>
     </div>
 
-    
     <div class="cards">
-
         <div class="card">
             <h2><?= $total ?></h2>
             <p>Total Appointments</p>
         </div>
-
         <div class="card">
             <h2><?= $pending ?></h2>
             <p>Pending</p>
         </div>
-
         <div class="card">
             <h2><?= $approved ?></h2>
             <p>Approved</p>
         </div>
-
         <div class="card">
             <h2><?= $completed ?></h2>
             <p>Completed</p>
         </div>
-
     </div>
 
     <div class="content">
-
         <div class="box">
             <h3>Recent Appointments</h3>
 
@@ -310,19 +280,27 @@ body{
             $appointments = mysqli_query($conn,
             "SELECT * FROM appointments
              WHERE student_id='$student_id'
+               AND student_id != ''
+               AND student_id != '0'
+               AND student_id IS NOT NULL
              ORDER BY created_at DESC
              LIMIT 5");
 
-            while($row = mysqli_fetch_assoc($appointments)){
+            if(mysqli_num_rows($appointments) > 0) {
+                while($row = mysqli_fetch_assoc($appointments)){
+                ?>
+                <div class="appointment">
+                    <span><?= htmlspecialchars($row['concern']) ?></span>
+                    <span class="badge <?= strtolower($row['status']) ?>">
+                        <?= ucfirst($row['status']) ?>
+                    </span>
+                </div>
+                <?php 
+                }
+            } else {
+                echo "<p style='color: #888; font-size: 14px;'>No recent appointments found.</p>";
+            }
             ?>
-            <div class="appointment">
-                <span><?= htmlspecialchars($row['concern']) ?></span>
-                <span class="badge <?= $row['status'] ?>">
-                    <?= ucfirst($row['status']) ?>
-                </span>
-            </div>
-            <?php } ?>
-
         </div>
 
         <div class="box">
@@ -330,19 +308,16 @@ body{
             <p>✔ Welcome to PUP AppointEd</p>
             <p>✔ System Active</p>
         </div>
-
     </div>
 
-    
     <div class="cta">
         <div>
             <h2>Need a Consultation?</h2>
             <p>Book an appointment with your faculty.</p>
         </div>
-
         <a href="book_appointment.php" class="btn">Book Now</a>
     </div>
-
 </div>
 
-</body> 
+</body>
+</html>
