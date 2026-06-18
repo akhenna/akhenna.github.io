@@ -296,21 +296,45 @@ tbody tr:hover{
             <div class="table-container">
                 <table>
                     <thead>
-                        <tr>
-                            <th>Student</th>
-                            <th>Faculty</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                        </tr>
+                       <tr>
+                         <th>Student</th>
+                         <th>Faculty</th>
+                        <th>Date</th>
+                         <th>Status</th>
+                          <th>Action</th>
+                            </tr>
                     </thead>
                     <tbody>
                         <?php while($row = mysqli_fetch_assoc($result)): ?>
-                        <tr>
-                            <td data-label="Student"><?= htmlspecialchars($row['first_name'] . ' ' . $row['last_name']) ?></td>
-                            <td data-label="Faculty"><?= htmlspecialchars($row['faculty_name']) ?></td>
-                            <td data-label="Date"><?= htmlspecialchars($row['appointment_date']) ?></td>
-                            <td data-label="Status"><span class="mini-status <?= strtolower($row['status']) ?>"><?= htmlspecialchars($row['status']) ?></span></td>
-                        </tr>
+                       <tr>
+    <td data-label="Student">
+        <?= htmlspecialchars($row['first_name'] . ' ' . $row['last_name']) ?>
+    </td>
+
+    <td data-label="Faculty">
+        <?= htmlspecialchars($row['faculty_name']) ?>
+    </td>
+
+    <td data-label="Date">
+        <?= htmlspecialchars($row['appointment_date']) ?>
+    </td>
+
+    <td data-label="Status">
+        <span class="mini-status <?= strtolower($row['status']) ?>">
+            <?= htmlspecialchars($row['status']) ?>
+        </span>
+    </td>
+
+    <td data-label="Action">
+        <?php if(strtolower($row['status']) == 'completed'): ?>
+            <a href="delete_appointment.php?id=<?= $row['id'] ?>"
+               class="btn btn-danger btn-sm"
+               onclick="return confirm('Are you sure you want to delete this appointment?');">
+                Delete
+            </a>
+        <?php endif; ?>
+    </td>
+</tr>
                         <?php endwhile; ?>
                     </tbody>
                 </table>
