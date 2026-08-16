@@ -206,7 +206,7 @@ body{
 
             <iframe
                 title="BOOKING (1)"
-                src="https://app.powerbi.com/view?r=eyJrIjoiN2MwZWFlZWItNjA3Yy00NjYwLWJiNzctNDhiZjZiMmY5MGEzIiwidCI6IjRkYTk4NTcxLWRjZWEtNDgzOS04ZmIxLTBiZGQ1ZGM5NjlmOSIsImMiOjEwfQ%3D%3D"
+                src="https://app.powerbi.com/view?r=eyJrIjoiOWYyN2I5OTAtMWRjZC00OWVhLWFlMDQtODhiNjU2ZTc4NWVmIiwidCI6IjRkYTk4NTcxLWRjZWEtNDgzOS04ZmIxLTBiZGQ1ZGM5NjlmOSIsImMiOjEwfQ%3D%3D"
                 allowfullscreen="true">
             </iframe>
 
