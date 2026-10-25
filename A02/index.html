@@ -3,13 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Samsung Shop</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
 
   <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f8f9fa;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
     }
 
     .section {
@@ -17,18 +33,92 @@
       padding: 30px 0;
     }
 
-    .active {
+    .section.active {
       display: block;
     }
 
+    .container {
+      width: 100%;
+    }
+
+
+    header {
+      padding: 16px 12px !important;
+    }
+
+    header h2 {
+      font-size: clamp(24px, 4vw, 32px);
+      margin: 0;
+    }
+
+    #mainNav {
+      display: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+    }
+
+    #mainNav a {
+      display: inline-block;
+      margin: 0 !important;
+      padding: 5px;
+      font-size: 15px;
+      text-decoration: none;
+    }
+
+    #mainNav a:hover {
+      color: #adb5bd !important;
+    }
+
+
+    #landing {
+      padding: clamp(40px, 10vw, 100px) 15px;
+    }
+
+    #landing h2 {
+      font-size: clamp(26px, 5vw, 40px);
+    }
+
+    #landing .btn {
+      padding: 10px 25px;
+      border-radius: 8px;
+    }
+
+
     .hero {
       position: relative;
+      width: 100%;
+      min-height: 420px;
       border-radius: 15px;
       overflow: hidden;
+      isolation: isolate;
+      background: #171727;
     }
 
     .hero img {
+      display: block;
+      position: absolute;
+      inset: 0;
       width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: -2;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(10, 10, 25, 0.78) 0%,
+        rgba(10, 10, 25, 0.38) 48%,
+        rgba(10, 10, 25, 0.02) 100%
+      );
+      z-index: -1;
+      pointer-events: none;
     }
 
     .overlay-text {
@@ -37,28 +127,94 @@
       left: 5%;
       transform: translateY(-50%);
       color: white;
-      max-width: 50%;
+      width: 48%;
+      max-width: 520px;
+      padding: 10px 0;
+    }
+
+    .overlay-text h2 {
+      font-size: clamp(25px, 3.5vw, 46px);
+      line-height: 1.15;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .overlay-text p {
+      font-size: clamp(14px, 1.5vw, 18px);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .hero-buttons .btn {
+      padding: 10px 18px;
+      border-radius: 7px;
+      font-size: 14px;
     }
 
     .product-card {
+      width: 100%;
       background: white;
       border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      padding: clamp(15px, 4vw, 25px);
+      overflow: hidden;
+    }
+
+    #phoneImg {
+      display: block;
+      width: 100%;
+      max-width: 350px;
+      max-height: 350px;
+      object-fit: contain;
+      margin: 0 auto 20px;
+      transition: opacity 0.3s ease;
+    }
+
+    .product-card h3 {
+      font-size: clamp(22px, 4vw, 28px);
+      overflow-wrap: break-word;
+    }
+
+    .product-card p {
+      margin-bottom: 15px;
     }
 
     .color {
-      width: 25px;
-      height: 25px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
       display: inline-block;
       margin: 5px;
       cursor: pointer;
       border: 2px solid transparent;
+      vertical-align: middle;
+      transition: border-color 0.2s ease;
+    }
+
+    .color:focus-visible {
+      outline: 2px solid #0d6efd;
+      outline-offset: 3px;
     }
 
     .activeColor {
       border: 2px solid black;
+    }
+
+    .storage-options {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .storage-options .btn {
+      white-space: normal;
     }
 
     .activeStorage {
@@ -66,18 +222,243 @@
       color: white !important;
     }
 
-    /* Smooth image transition */
-    #phoneImg {
-      transition: opacity 0.3s ease;
+    .product-price {
+      font-size: clamp(22px, 4vw, 28px);
+      overflow-wrap: anywhere;
     }
 
-    @media (max-width:768px) {
+    .product-rating {
+      font-size: 14px;
+    }
+
+    .specs {
+      margin-top: 35px;
+      padding: clamp(18px, 4vw, 30px);
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    }
+
+    .specs h3 {
+      font-size: clamp(21px, 4vw, 28px);
+      margin-bottom: 18px;
+    }
+
+    .specs ul {
+      padding-left: 22px;
+      margin-bottom: 0;
+    }
+
+    .specs li {
+      margin-bottom: 12px;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+    }
+
+    #contact {
+      overflow-wrap: anywhere;
+    }
+
+    #contact h2 {
+      font-size: clamp(24px, 5vw, 32px);
+      margin-bottom: 20px;
+    }
+
+    .modal-dialog {
+      width: auto;
+      max-width: 500px;
+      margin: 1.75rem auto;
+    }
+
+    .modal-content {
+      border: 0;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+      padding: 16px 20px;
+    }
+
+    .modal-body .form-control {
+      padding: 11px;
+    }
+
+    @media (max-width: 991.98px) {
+      .hero {
+        min-height: 380px;
+      }
+
       .overlay-text {
-        max-width: 80%;
+        width: 55%;
       }
 
       .overlay-text h2 {
-        font-size: 24px;
+        font-size: clamp(25px, 4vw, 36px);
+      }
+
+      .hero-buttons .btn {
+        padding: 9px 13px;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .section {
+        padding: 20px 0;
+      }
+
+      .container {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      header {
+        padding: 14px 10px !important;
+      }
+
+      #mainNav {
+        gap: 8px;
+      }
+
+      #mainNav a {
+        font-size: 14px;
+      }
+
+      .hero {
+        min-height: 470px;
+        border-radius: 12px;
+      }
+
+      .hero img {
+        object-position: 60% center;
+      }
+
+      .hero::after {
+        background: linear-gradient(
+          180deg,
+          rgba(10, 10, 25, 0.02) 0%,
+          rgba(10, 10, 25, 0.10) 25%,
+          rgba(10, 10, 25, 0.65) 52%,
+          rgba(10, 10, 25, 0.96) 100%
+        );
+      }
+
+      .overlay-text {
+        top: auto;
+        bottom: 0;
+        left: 0;
+        transform: none;
+        width: 100%;
+        max-width: none;
+        padding: 24px 18px;
+      }
+
+      .overlay-text h2 {
+        font-size: clamp(25px, 6vw, 34px);
+        line-height: 1.2;
+        margin-bottom: 12px;
+      }
+
+      .overlay-text p {
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 16px;
+      }
+
+      .hero-buttons {
+        gap: 8px;
+      }
+
+      .hero-buttons .btn {
+        flex: 1 1 auto;
+        min-width: 0;
+        padding: 10px 12px;
+        font-size: 13px;
+      }
+
+      .product-card {
+        max-width: 480px;
+        margin: 0 auto;
+      }
+
+      #phoneImg {
+        max-width: 280px;
+        max-height: 280px;
+      }
+
+      .storage-options .btn {
+        font-size: 13px;
+        padding: 8px 10px;
+      }
+
+      .product-rating {
+        font-size: 13px;
+      }
+
+      .specs {
+        margin-top: 25px;
+      }
+
+      .modal-dialog {
+        margin: 12px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .hero {
+        min-height: 440px;
+      }
+
+      .overlay-text {
+        padding: 18px 14px;
+      }
+
+      .overlay-text h2 {
+        font-size: 25px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .hero-buttons .btn {
+        width: 100%;
+      }
+
+      .storage-options {
+        flex-direction: column;
+      }
+
+      .storage-options .btn {
+        width: 100%;
+      }
+
+      #phoneImg {
+        max-width: 230px;
+      }
+    }
+
+    @media (max-width: 320px) {
+      .hero {
+        min-height: 420px;
+      }
+
+      .overlay-text h2 {
+        font-size: 22px;
+      }
+
+      .overlay-text p {
+        font-size: 13px;
+      }
+
+      #mainNav {
+        gap: 5px;
+      }
+
+      #mainNav a {
+        font-size: 12px;
       }
     }
   </style>
@@ -85,177 +466,440 @@
 
 <body>
 
-<header class="bg-dark text-white text-center py-3">
-  <h2 class="fw-bold">Samsung</h2>
+  <header class="bg-dark text-white text-center">
+    <h2 class="fw-bold">Samsung</h2>
 
-  <nav id="mainNav" class="mt-2" style="display:none;">
-    <a href="#" class="text-white me-3" onclick="showSection('home')">Home</a>
-    <a href="#" class="text-white me-3" onclick="showSection('products')">Products</a>
-    <a href="#" class="text-white" onclick="showSection('contact')">Contact</a>
-  </nav>
-</header>
+    <nav id="mainNav" class="mt-3">
+      <a href="#home" class="text-white"
+         onclick="showSection('home')">Home</a>
 
-<div class="container py-4">
+      <a href="#products" class="text-white"
+         onclick="showSection('products')">Products</a>
 
-  <!-- Landing -->
-  <div id="landing" class="section active text-center">
-    <h2 class="mb-3 fw-bold">Welcome to Samsung</h2>
-    <button class="btn btn-dark" onclick="enterSite()">Shop Now</button>
-  </div>
+      <a href="#contact" class="text-white"
+         onclick="showSection('contact')">Contact</a>
+    </nav>
+  </header>
 
-  <!-- Home -->
-  <div id="home" class="section">
-    <div class="hero">
-      <img src="https://images.samsung.com/ph/smartphones/galaxy-s26-ultra/images/galaxy-s26-ultra-features-kv.jpg?imbypass=true" alt="Galaxy S26 Ultra">
+  <main class="container py-4">
 
-      <div class="overlay-text">
-        <h2>Introducing the New<br>Galaxy S26 Ultra</h2>
-        <p>Up to 45% off when you trade-in your old device.</p>
-        <button class="btn btn-dark" onclick="showSection('products')">Buy Now</button>
-        <button class="btn btn-primary ms-2" onclick="showSection('products')">Learn More</button>
-      </div>
-    </div>
-  </div>
+    <section id="landing" class="section active text-center">
+      <h2 class="mb-3 fw-bold">Welcome to Samsung</h2>
 
-  <!-- Products -->
-  <div id="products" class="section">
-    <h2 class="mb-4">Products</h2>
+      <p class="text-muted mb-4">
+        Discover the latest Samsung Galaxy experience.
+      </p>
 
-    <div class="row justify-content-center">
-      <div class="col-md-6 col-lg-4">
-        <div class="product-card text-center">
+      <button class="btn btn-dark"
+              type="button"
+              onclick="enterSite()">
+        Shop Now
+      </button>
+    </section>
 
-          <img id="phoneImg" class="img-fluid mb-3"
-            src="https://images.samsung.com/is/image/samsung/p6pim/ph/s2602/gallery/ph-galaxy-s26-ultra-s948-578322-sm-s948bzdcphl-550823145?imbypass=true"
-            alt="Galaxy S26 Ultra">
+    <section id="home" class="section">
 
-          <h3>Galaxy S26 Ultra</h3>
-          <p id="colorText">Color: Pink Gold</p>
+      <div class="hero">
 
-          <!-- COLORS (FIXED) -->
-          <div class="mb-3">
-            <span class="color activeColor" style="background:#e6d3c3;"
-              onclick="changeColor(this,'Pink Gold','https://images.samsung.com/is/image/samsung/p6pim/ph/s2602/gallery/ph-galaxy-s26-ultra-s948-578322-sm-s948bzdcphl-550823145?imbypass=true')">
-            </span>
+        <img
+          src="https://images.samsung.com/ph/smartphones/galaxy-s26-ultra/images/galaxy-s26-ultra-features-kv.jpg?imbypass=true"
+          alt="Samsung Galaxy S26 Ultra"
+        >
 
-            <span class="color" style="background:#555;"
-              onclick="changeColor(this,'Silver Shadow','https://images.samsung.com/is/image/samsung/p6pim/ph/s2602/gallery/ph-galaxy-s26-ultra-s948-578322-sm-s948bzscphl-550823256?imbypass=true')">
-            </span>
+        <div class="overlay-text">
+
+          <h2>
+            Introducing the New<br>
+            Galaxy S26 Ultra
+          </h2>
+
+          <p>
+            Up to 45% off when you trade-in your old device.
+          </p>
+
+          <div class="hero-buttons">
+            <button
+              class="btn btn-dark"
+              type="button"
+              onclick="showSection('products')">
+              Buy Now
+            </button>
+
+            <button
+              class="btn btn-primary"
+              type="button"
+              onclick="showSection('products')">
+              Learn More
+            </button>
           </div>
 
-          <!-- STORAGE -->
-          <div class="mb-3">
-            <button class="btn btn-outline-dark activeStorage" onclick="selectStorage(this)">12GB/512GB</button>
-            <button class="btn btn-outline-dark" onclick="selectStorage(this)">12GB/256GB</button>
-          </div>
-
-          <div class="fw-bold fs-4">₱100,990.00</div>
-          <div class="mb-3">★★★★★ 4.8 (13102)</div>
-
-          <button class="btn btn-dark" onclick="openForm()">Buy Now</button>
         </div>
       </div>
-    </div>
 
-    <!-- Specs -->
-    <div class="mt-5 p-4 bg-light rounded shadow-sm">
-      <h3>Galaxy S26 Ultra Specifications</h3>
-      <ul>
-        <li><strong>Display:</strong> 6.9 Dynamic AMOLED 2X, 120Hz</li>
-        <li><strong>Processor:</strong> Snapdragon 8 Gen 4</li>
-        <li><strong>RAM/Storage:</strong> 12GB/256GB or 512GB</li>
-        <li><strong>Camera:</strong> 200MP Quad Camera</li>
-        <li><strong>Battery:</strong> 5000mAh, 45W Fast Charging</li>
-      </ul>
+    </section>
+
+    <!-- PRODUCTS PAGE -->
+    <section id="products" class="section">
+
+      <h2 class="mb-4 fw-bold">Products</h2>
+
+      <div class="row justify-content-center">
+
+        <div class="col-12 col-md-8 col-lg-5">
+
+          <div class="product-card text-center">
+
+            <img
+              id="phoneImg"
+              class="img-fluid mb-3"
+              src="https://images.samsung.com/is/image/samsung/p6pim/ph/s2602/gallery/ph-galaxy-s26-ultra-s948-578322-sm-s948bzdcphl-550823145?imbypass=true"
+              alt="Galaxy S26 Ultra Pink Gold"
+            >
+
+            <h3 class="fw-bold">Galaxy S26 Ultra</h3>
+
+            <p id="colorText">Color: Pink Gold</p>
+
+            <!-- COLORS -->
+            <div class="mb-3">
+
+              <button
+                type="button"
+                class="color activeColor"
+                style="background:#e6d3c3;"
+                aria-label="Select Pink Gold"
+                aria-pressed="true"
+                onclick="changeColor(
+                  this,
+                  'Pink Gold',
+                  'https://images.samsung.com/is/image/samsung/p6pim/ph/s2602/gallery/ph-galaxy-s26-ultra-s948-578322-sm-s948bzdcphl-550823145?imbypass=true'
+                )">
+              </button>
+
+              <button
+                type="button"
+                class="color"
+                style="background:#555;"
+                aria-label="Select Silver Shadow"
+                aria-pressed="false"
+                onclick="changeColor(
+                  this,
+                  'Silver Shadow',
+                  'https://images.samsung.com/is/image/samsung/p6pim/ph/s2602/gallery/ph-galaxy-s26-ultra-s948-578322-sm-s948bzscphl-550823256?imbypass=true'
+                )">
+              </button>
+
+            </div>
+
+            <!-- STORAGE -->
+            <div class="storage-options mb-3">
+
+              <button
+                type="button"
+                class="btn btn-outline-dark activeStorage"
+                aria-pressed="true"
+                onclick="selectStorage(this)">
+                12GB/512GB
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-outline-dark"
+                aria-pressed="false"
+                onclick="selectStorage(this)">
+                12GB/256GB
+              </button>
+
+            </div>
+
+            <!-- PRICE -->
+            <div class="product-price fw-bold mb-2">
+              ₱100,990.00
+            </div>
+
+            <div class="product-rating mb-3">
+              <span class="text-warning">★★★★★</span>
+              4.8 (13102)
+            </div>
+
+            <button
+              type="button"
+              class="btn btn-dark w-100"
+              onclick="openForm()">
+              Buy Now
+            </button>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SPECIFICATIONS -->
+      <div class="specs">
+
+        <h3 class="fw-bold">
+          Galaxy S26 Ultra Specifications
+        </h3>
+
+        <ul>
+          <li>
+            <strong>Display:</strong>
+            6.9-inch Dynamic AMOLED 2X, 120Hz
+          </li>
+
+          <li>
+            <strong>Processor:</strong>
+            Snapdragon 8 Gen 4
+          </li>
+
+          <li>
+            <strong>RAM/Storage:</strong>
+            12GB/256GB or 512GB
+          </li>
+
+          <li>
+            <strong>Camera:</strong>
+            200MP Quad Camera
+          </li>
+
+          <li>
+            <strong>Battery:</strong>
+            5000mAh, 45W Fast Charging
+          </li>
+        </ul>
+
+      </div>
+
+    </section>
+
+    <!-- CONTACT PAGE -->
+    <section id="contact" class="section">
+
+      <div class="product-card">
+
+        <h2 class="fw-bold">
+          Contact Samsung Philippines
+        </h2>
+
+        <p>
+          <strong>Email:</strong>
+          <a href="mailto:support.ph@samsung.com">
+            support.ph@samsung.com
+          </a>
+        </p>
+
+        <p>
+          <strong>Website:</strong>
+          <a href="https://www.samsung.com/ph/"
+             target="_blank"
+             rel="noopener noreferrer">
+            https://www.samsung.com/ph/
+          </a>
+        </p>
+
+        <p>
+          <strong>Address:</strong>
+          Ortigas Center, Pasig City
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ORDER MODAL -->
+  <div
+    class="modal fade"
+    id="orderModal"
+    tabindex="-1"
+    aria-labelledby="orderModalTitle"
+    aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered">
+
+      <div class="modal-content">
+
+        <div class="modal-header">
+
+          <h5 class="modal-title fw-bold" id="orderModalTitle">
+            Order Form
+          </h5>
+
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close">
+          </button>
+
+        </div>
+
+        <form id="orderForm">
+
+          <div class="modal-body">
+
+            <label for="name" class="form-label">
+              Your Name
+            </label>
+
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-control mb-3"
+              placeholder="Enter your name"
+              autocomplete="name"
+              required
+            >
+
+            <label for="address" class="form-label">
+              Address
+            </label>
+
+            <textarea
+              id="address"
+              name="address"
+              class="form-control"
+              rows="3"
+              placeholder="Enter your complete address"
+              autocomplete="street-address"
+              required>
+            </textarea>
+
+          </div>
+
+          <div class="modal-footer">
+
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal">
+              Cancel
+            </button>
+
+            <button type="submit" class="btn btn-dark">
+              Submit Order
+            </button>
+
+          </div>
+
+        </form>
+
+      </div>
     </div>
   </div>
 
-  <!-- Contact -->
-  <div id="contact" class="section">
-    <h2>Contact Samsung Philippines</h2>
-    <p><strong>Email:</strong> support.ph@samsung.com</p>
-    <p><strong>Website:</strong> https://www.samsung.com/ph/</p>
-    <p><strong>Address:</strong> Ortigas Center, Pasig City</p>
-  </div>
+  <!-- BOOTSTRAP JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-</div>
+  <script>
+    const orderModalElement = document.getElementById('orderModal');
 
-<!-- Modal -->
-<div class="modal fade" id="orderModal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
+    const modal = new bootstrap.Modal(orderModalElement);
 
-      <div class="modal-header">
-        <h5>Order Form</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
 
-      <div class="modal-body">
-        <input type="text" id="name" class="form-control mb-2" placeholder="Your Name">
-        <input type="text" id="address" class="form-control" placeholder="Address">
-      </div>
+    function enterSite() {
+      showSection('home');
 
-      <div class="modal-footer">
-        <button class="btn btn-dark" onclick="submitOrder()">Submit</button>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-  let modal = new bootstrap.Modal(document.getElementById('orderModal'));
-
-  function enterSite() {
-    document.getElementById('landing').classList.remove('active');
-    document.getElementById('home').classList.add('active');
-    document.getElementById('mainNav').style.display = 'block';
-  }
-
-  function showSection(id) {
-    document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-  }
-
-  function changeColor(el, color, imgSrc) {
-    document.querySelectorAll('.color').forEach(c => c.classList.remove('activeColor'));
-    el.classList.add('activeColor');
-
-    document.getElementById('colorText').innerText = "Color: " + color;
-
-    let img = document.getElementById('phoneImg');
-    img.style.opacity = 0;
-
-    setTimeout(() => {
-      img.src = imgSrc;
-      img.style.opacity = 1;
-    }, 200);
-  }
-
-  function selectStorage(el) {
-    document.querySelectorAll('#products .btn-outline-dark').forEach(btn => btn.classList.remove('activeStorage'));
-    el.classList.add('activeStorage');
-  }
-
-  function openForm() {
-    modal.show();
-  }
-
-  function submitOrder() {
-    let name = document.getElementById('name').value;
-    let address = document.getElementById('address').value;
-
-    if (!name || !address) {
-      alert("Please fill up all fields");
-      return;
+      document.getElementById('mainNav').style.display = 'flex';
     }
 
-    alert("Order Successful!");
-    modal.hide();
-  }
-</script>
+    function showSection(id) {
+      const sections = document.querySelectorAll('.section');
+
+      sections.forEach(function(section) {
+        section.classList.remove('active');
+      });
+
+      const targetSection = document.getElementById(id);
+
+      if (targetSection) {
+        targetSection.classList.add('active');
+      }
+
+      // Show navigation after leaving the landing page.
+      if (id !== 'landing') {
+        document.getElementById('mainNav').style.display = 'flex';
+      }
+
+      // Return to the top after switching sections.
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+
+    let imageChangeTimer;
+
+    function changeColor(element, color, imgSrc) {
+      document.querySelectorAll('.color').forEach(function(button) {
+        button.classList.remove('activeColor');
+        button.setAttribute('aria-pressed', 'false');
+      });
+
+      element.classList.add('activeColor');
+      element.setAttribute('aria-pressed', 'true');
+
+      document.getElementById('colorText').textContent =
+        'Color: ' + color;
+
+      const img = document.getElementById('phoneImg');
+
+      clearTimeout(imageChangeTimer);
+
+      img.style.opacity = '0';
+
+      imageChangeTimer = setTimeout(function() {
+        img.src = imgSrc;
+        img.alt = 'Galaxy S26 Ultra ' + color;
+        img.style.opacity = '1';
+      }, 200);
+    }
+
+
+    function selectStorage(element) {
+      const buttons = document.querySelectorAll(
+        '#products .storage-options .btn'
+      );
+
+      buttons.forEach(function(button) {
+        button.classList.remove('activeStorage');
+        button.setAttribute('aria-pressed', 'false');
+      });
+
+      element.classList.add('activeStorage');
+      element.setAttribute('aria-pressed', 'true');
+    }
+
+
+    function openForm() {
+      modal.show();
+    }
+
+
+    document.getElementById('orderForm').addEventListener(
+      'submit',
+      function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value.trim();
+        const address = document.getElementById('address').value.trim();
+
+        if (!name || !address) {
+          alert('Please fill up all fields.');
+          return;
+        }
+
+        alert('Order Successful! Thank you, ' + name + '!');
+
+        this.reset();
+
+        modal.hide();
+      }
+    );
+  </script>
 
 </body>
 </html>
