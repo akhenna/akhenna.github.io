@@ -2,16 +2,19 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5eaff">
     <title>My Portfolio</title>
 
     <link rel="icon" type="image/png"
         href="https://i.pinimg.com/originals/3b/f1/97/3bf197d2c0e59325aacf38d6d980df6f.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
         :root {
@@ -25,7 +28,9 @@
             --purple-50: #fbf7ff;
             --ink: #30243b;
             --muted: #766b80;
-            --surface: rgba(255, 255, 255, 0.88);
+            --neo-bg: #f5eaff;
+            --neo-light: #ffffff;
+            --neo-shadow: #d9c9e8;
             --border: rgba(118, 70, 153, 0.13);
         }
 
@@ -43,9 +48,12 @@
             color: var(--ink);
             font-family: 'Inter', sans-serif;
             background:
-                radial-gradient(ellipse at 8% 5%, rgba(222, 181, 255, .65), transparent 34%),
-                radial-gradient(ellipse at 94% 90%, rgba(238, 197, 255, .55), transparent 32%),
-                linear-gradient(135deg, #fbf7ff 0%, #f5e8ff 48%, #fff8ff 100%);
+                radial-gradient(ellipse at 8% 5%,
+                    rgba(222, 181, 255, .65), transparent 34%),
+                radial-gradient(ellipse at 94% 90%,
+                    rgba(238, 197, 255, .55), transparent 32%),
+                linear-gradient(135deg,
+                    #fbf7ff 0%, #f5e8ff 48%, #fff8ff 100%);
             background-attachment: fixed;
         }
 
@@ -56,6 +64,10 @@
 
         a {
             overflow-wrap: anywhere;
+            text-decoration: none;
+        }
+        button {
+            font-family: inherit;
         }
 
         .portfolio-layout {
@@ -65,12 +77,16 @@
         }
 
         .glass-card {
-            background: var(--surface);
+            background: rgba(245, 234, 255, .88);
             border: 1px solid rgba(255, 255, 255, .85);
             border-radius: 24px;
-            box-shadow: 0 14px 40px rgba(72, 29, 101, .08);
+            box-shadow:
+                8px 8px 20px rgba(120, 83, 150, .12),
+                -8px -8px 20px rgba(255, 255, 255, .85);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
+            transition: box-shadow .5s ease,
+                        background .5s ease;
         }
 
         .profile-card {
@@ -82,8 +98,14 @@
         .profile-banner {
             height: 100px;
             margin: -2rem -2rem 0;
-            background: linear-gradient(125deg, var(--purple-900), #8d4ab5 60%, #c69be5);
+            background: linear-gradient(
+                125deg,
+                var(--purple-900),
+                #8d4ab5 60%,
+                #c69be5
+            );
             position: relative;
+            overflow: hidden;
         }
 
         .profile-banner::after {
@@ -95,10 +117,13 @@
             border-radius: 50%;
             right: -25px;
             top: -65px;
-            box-shadow: 0 0 0 18px rgba(255, 255, 255, .06), 0 0 0 38px rgba(255, 255, 255, .04);
+            box-shadow:
+                0 0 0 18px rgba(255, 255, 255, .06),
+                0 0 0 38px rgba(255, 255, 255, .04);
         }
 
         .profile-photo {
+            display: block;
             width: 124px;
             height: 124px;
             object-fit: cover;
@@ -111,17 +136,10 @@
             background: var(--purple-100);
         }
 
-        .eyebrow {
-            color: var(--purple-700);
-            font-size: .72rem;
-            font-weight: 800;
-            letter-spacing: .13em;
-            text-transform: uppercase;
-        }
-
         .role-pill {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             padding: 8px 13px;
             border: 1px solid #ead8f7;
@@ -141,6 +159,12 @@
             min-width: 0;
         }
 
+        .contact-detail p,
+        .contact-detail a {
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+
         .contact-icon {
             display: grid;
             place-items: center;
@@ -148,12 +172,11 @@
             width: 36px;
             height: 36px;
             border-radius: 12px;
-            background: var(--purple-50);
+            background: var(--neo-bg);
             color: var(--purple-700);
-        }
-
-        .contact-detail p {
-            overflow-wrap: anywhere;
+            box-shadow:
+                3px 3px 7px rgba(120, 83, 150, .12),
+                -3px -3px 7px rgba(255, 255, 255, .9);
         }
 
         .main-column {
@@ -166,9 +189,10 @@
             justify-content: space-between;
             gap: 8px;
             padding: 10px;
-            position: stiky;
+            position: sticky;
             top: 16px;
-            z-index: 20;
+            z-index: 1000;
+            min-width: 0;
         }
 
         .nav-brand {
@@ -188,13 +212,17 @@
             height: 34px;
             border-radius: 11px;
             color: white;
-            background: linear-gradient(135deg, var(--purple-800), var(--purple-500));
-            box-shadow: 0 5px 12px rgba(91, 33, 132, .2);
+            background: linear-gradient(
+                135deg,
+                var(--purple-800),
+                var(--purple-500)
+            );
         }
 
         .nav-links {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 5px;
             min-width: 0;
         }
@@ -212,24 +240,30 @@
             font-size: .86rem;
             font-weight: 700;
             cursor: pointer;
-            transition: color .2s ease, background .2s ease, transform .2s ease, box-shadow .2s ease;
+            transition: all .5s ease;
             white-space: nowrap;
         }
 
         .nav-btn:hover {
             color: var(--purple-800);
             background: #f7efff;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
         }
 
         .nav-btn.active {
             color: white;
-            background: linear-gradient(135deg, var(--purple-800), var(--purple-600));
-            box-shadow: 0 7px 16px rgba(91, 33, 132, .2);
+            background: linear-gradient(
+                135deg,
+                var(--purple-800),
+                var(--purple-600)
+            );
+            box-shadow:
+                4px 4px 10px rgba(91, 33, 132, .2),
+                -2px -2px 8px rgba(255, 255, 255, .15);
         }
 
         .section {
-            animation: sectionIn .32s ease both;
+            animation: sectionIn .5s ease both;
         }
 
         .section[hidden] {
@@ -237,17 +271,15 @@
         }
 
         @keyframes sectionIn {
-
             from {
                 opacity: 0;
-                transform: translateY(7px);
+                transform: translateY(12px);
             }
 
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
-
         }
 
         .section-panel {
@@ -266,40 +298,49 @@
             width: 52px;
             height: 4px;
             border-radius: 999px;
-            background: linear-gradient(90deg, var(--purple-700), #c49ae6);
+            background: linear-gradient(
+                90deg,
+                var(--purple-700),
+                #c49ae6
+            );
             margin-top: 13px;
             margin-bottom: 22px;
         }
 
         .skill-card,
         .project-card {
-
-            border: 1px solid var(--border);
+            min-width: 0;
+            border: 1px solid rgba(255, 255, 255, .8);
             border-radius: 19px;
-
-            background: rgba(255, 255, 255, .82);
-
-            transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+            background: var(--neo-bg);
+            box-shadow:
+                6px 6px 14px rgba(120, 83, 150, .12),
+                -6px -6px 14px rgba(255, 255, 255, .85);
+            transition: all .5s ease;
         }
 
         .skill-card:hover,
         .project-card:hover {
-
             transform: translateY(-4px);
             border-color: rgba(139, 69, 181, .3);
-            box-shadow: 0 13px 28px rgba(72, 29, 101, .09);
+            box-shadow:
+                9px 9px 20px rgba(120, 83, 150, .16),
+                -6px -6px 16px rgba(255, 255, 255, .9);
         }
 
         .skill-icon,
         .project-icon {
-
             display: grid;
             place-items: center;
             width: 44px;
             height: 44px;
+            flex-shrink: 0;
             border-radius: 14px;
             color: var(--purple-800);
             background: var(--purple-100);
+            box-shadow:
+                inset 2px 2px 5px rgba(120, 83, 150, .06),
+                3px 3px 7px rgba(120, 83, 150, .08);
             font-size: 1.05rem;
         }
 
@@ -314,7 +355,7 @@
             grid-template-columns: minmax(130px, .7fr) minmax(0, 1.3fr);
             gap: 12px;
             padding: 11px 0;
-            border-bottom: 1px solid #f0e8f6;
+            border-bottom: 1px solid #e8dcf2;
             font-size: .9rem;
         }
 
@@ -329,6 +370,7 @@
         .profile-row span {
             color: #776b81;
             overflow-wrap: anywhere;
+            min-width: 0;
         }
 
         .primary-link {
@@ -336,14 +378,20 @@
             justify-content: center;
             align-items: center;
             gap: 9px;
+            max-width: 100%;
             padding: 12px 17px;
+            border: 1px solid rgba(255, 255, 255, .25);
             border-radius: 13px;
             color: white;
             font-weight: 700;
             font-size: .88rem;
-            background: linear-gradient(135deg, var(--purple-800), var(--purple-600));
+            background: linear-gradient(
+                135deg,
+                var(--purple-800),
+                var(--purple-600)
+            );
             box-shadow: 0 7px 16px rgba(91, 33, 132, .18);
-            transition: transform .2s ease, box-shadow .2s ease;
+            transition: all .5s ease;
         }
 
         .primary-link:hover {
@@ -355,6 +403,7 @@
         .muted-copy {
             color: var(--muted);
             line-height: 1.85;
+            overflow-wrap: anywhere;
         }
 
         .footer-note {
@@ -365,8 +414,17 @@
         }
 
         @media (max-width: 900px) {
+            body {
+                padding-bottom: 145px !important;
+                scroll-padding-bottom: 160px;
+                background-attachment: scroll;
+            }
+
             .portfolio-layout {
+                width: 100%;
                 gap: 20px;
+                margin-inline: auto;
+                padding-bottom: 12px;
             }
 
             .profile-card {
@@ -376,15 +434,11 @@
             .site-nav {
                 position: fixed;
                 top: auto;
-                bottom: 16px;
+                bottom: max(16px, env(safe-area-inset-bottom));
                 left: 50%;
                 transform: translateX(-50%);
                 width: min(calc(100% - 32px), 760px);
                 z-index: 1000;
-            }
-
-            body {
-                padding-bottom: 100px;
             }
 
             .nav-brand {
@@ -394,20 +448,36 @@
             .nav-btn {
                 padding: 10px 11px;
             }
+
+            .main-column {
+                width: 100%;
+                min-width: 0;
+            }
         }
 
-        @media (max-width: 640px) {
 
+        @media (max-width: 640px) {
             body {
+                padding: 16px 12px 165px !important;
                 background-attachment: scroll;
             }
 
             .portfolio-layout {
-                gap: 16px;
+                width: 100%;
+                gap: 18px;
+                margin: 0 auto;
+                padding-bottom: 0;
+            }
+
+            .portfolio-layout > aside,
+            .main-column {
+                width: 100%;
+                min-width: 0;
             }
 
             .profile-card {
                 padding: 24px !important;
+                border-radius: 22px;
             }
 
             .profile-banner {
@@ -424,28 +494,36 @@
 
             .site-nav {
                 display: block;
-                padding: 12px;
+                width: calc(100% - 24px);
+                max-width: 480px;
+                bottom: max(12px, env(safe-area-inset-bottom));
+                padding: 10px;
                 border-radius: 20px;
             }
 
             .nav-brand {
-                justify-content: center;
-                padding: 4px 4px 12px;
+                display: none;
             }
 
             .nav-links {
                 display: grid;
                 grid-template-columns: repeat(4, minmax(0, 1fr));
-                gap: 6px;
+                gap: 5px;
                 width: 100%;
             }
+
             .nav-btn {
+                display: flex;
                 flex-direction: column;
+                align-items: center;
+                justify-content: center;
                 gap: 5px;
-                padding: 10px 3px;
+                min-width: 0;
+                padding: 10px 2px;
                 border-radius: 13px;
-                font-size: .69rem;
+                font-size: .68rem;
                 white-space: normal;
+                text-align: center;
             }
 
             .nav-btn i {
@@ -454,6 +532,7 @@
 
             .section-panel {
                 padding: 22px !important;
+                border-radius: 22px;
             }
 
             .section-heading {
@@ -461,7 +540,7 @@
             }
 
             .profile-row {
-                grid-template-columns: 1fr;
+                grid-template-columns: minmax(0, 1fr);
                 gap: 4px;
             }
 
@@ -476,15 +555,25 @@
             }
 
             .primary-link {
-                width: 100%;
+                max-width: 100%;
             }
 
+            .project-card {
+                padding: 20px;
+            }
+
+            #contact .contact-detail {
+                align-items: center;
+            }
         }
 
         @media (max-width: 360px) {
-
             body {
-                padding: 12px 12px 110px !important;
+                padding: 12px 10px 160px !important;
+            }
+
+            .section-panel {
+                padding: 17px !important;
             }
 
             .nav-btn {
@@ -495,21 +584,23 @@
                 font-size: .9rem;
             }
 
-            .section-panel {
-                padding: 17px !important;
+            .profile-card {
+                padding: 20px !important;
             }
 
+            .profile-banner {
+                margin: -20px -20px 0;
+            }
         }
 
-        @media (prefers-reduced-motion: reduce) {
 
+        @media (prefers-reduced-motion: reduce) {
             *,
             *::before,
             *::after {
-
                 scroll-behavior: auto !important;
-                animation-duration: .01ms !important;
-                transition-duration: .01ms !important;
+                animation: none !important;
+                transition: none !important;
             }
         }
     </style>
@@ -519,189 +610,371 @@
 
     <div class="portfolio-layout max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6">
 
+        <!-- PROFILE -->
         <aside class="md:col-span-4 lg:col-span-3">
             <div class="glass-card profile-card p-8 text-center">
+
                 <div class="profile-banner" aria-hidden="true"></div>
-                <img src="https://i.pinimg.com/140x140_RS/37/31/ef/3731efbfe7637263c6f47a6a7c7d80ce.jpg"
-                    alt="Akhenna Siman Lachica profile photo" class="profile-photo">
 
-                <h1 class="text-xl md:text-2xl font-bold text-purple-900 leading-tight">Akhenna Siman Lachica</h1>
+                <img
+                    src="https://i.pinimg.com/140x140_RS/37/31/ef/3731efbfe7637263c6f47a6a7c7d80ce.jpg"
+                    alt="Akhenna Siman Lachica profile photo"
+                    class="profile-photo">
 
-                <p class="role-pill mt-3">
+                <h1 class="text-xl md:text-2xl font-bold text-purple-900 leading-tight">
+                    Akhenna Siman Lachica
+                </h1>
 
-                    Student Athlete
-                </p>
+                <p class="role-pill mt-3">Student Athlete</p>
 
                 <div class="mt-8 text-left space-y-5 text-sm">
+
                     <div class="contact-detail">
-                        <span class="contact-icon"><i class="fa-regular fa-envelope"></i></span>
+                        <span class="contact-icon">
+                            <i class="fa-regular fa-envelope"></i>
+                        </span>
                         <div class="min-w-0">
-                            <p class="text-gray-400 uppercase text-[10px] font-bold mb-1">Email</p>
-                            <p class="text-gray-700">akhennalachica02@gmail.com</p>
+                            <p class="text-gray-400 uppercase text-[10px] font-bold mb-1">
+                                Email
+                            </p>
+                            <p class="text-gray-700">
+                                akhennalachica02@gmail.com
+                            </p>
                         </div>
                     </div>
+
                     <div class="contact-detail">
-                        <span class="contact-icon"><i class="fa-solid fa-phone"></i></span>
+                        <span class="contact-icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </span>
                         <div class="min-w-0">
-                            <p class="text-gray-400 uppercase text-[10px] font-bold mb-1">Phone</p>
+                            <p class="text-gray-400 uppercase text-[10px] font-bold mb-1">
+                                Phone
+                            </p>
                             <p class="text-gray-700">Secret no clue</p>
                         </div>
                     </div>
+
                     <div class="contact-detail">
-                        <span class="contact-icon"><i class="fa-solid fa-location-dot"></i></span>
+                        <span class="contact-icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </span>
                         <div class="min-w-0">
-                            <p class="text-gray-400 uppercase text-[10px] font-bold mb-1">Location</p>
+                            <p class="text-gray-400 uppercase text-[10px] font-bold mb-1">
+                                Location
+                            </p>
                             <p class="text-gray-700">Calamba, Laguna</p>
                         </div>
                     </div>
+
                 </div>
             </div>
         </aside>
         <main class="main-column md:col-span-8 lg:col-span-9 space-y-6">
             <nav class="glass-card site-nav" aria-label="Main navigation">
                 <div class="nav-brand">
+                    <span class="nav-brand-mark">
+                        <i class="fa-solid fa-code"></i>
+                    </span>
+                    <span>My Portfolio</span>
                 </div>
+
                 <div class="nav-links">
 
-                    <button type="button" onclick="showSection('about', this)" class="nav-btn active"
+                    <button type="button"
+                        onclick="showSection('about', this)"
+                        class="nav-btn active"
                         aria-current="page">
+                        <i class="fa-regular fa-user"></i>
+                        <span>About</span>
+                    </button>
 
-                        <i class="fa-regular fa-user"></i><span>About</span>
+                    <button type="button"
+                        onclick="showSection('cv', this)"
+                        class="nav-btn">
+                        <i class="fa-regular fa-file-lines"></i>
+                        <span>CV</span>
                     </button>
-                    <button type="button" onclick="showSection('cv', this)" class="nav-btn">
-                        <i class="fa-regular fa-file-lines"></i><span>CV</span>
+
+                    <button type="button"
+                        onclick="showSection('portfolio', this)"
+                        class="nav-btn">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <span>Portfolio</span>
                     </button>
-                    <button type="button" onclick="showSection('portfolio', this)" class="nav-btn">
-                        <i class="fa-solid fa-layer-group"></i><span>Portfolio</span>
+
+                    <button type="button"
+                        onclick="showSection('contact', this)"
+                        class="nav-btn">
+                        <i class="fa-regular fa-paper-plane"></i>
+                        <span>Contact</span>
                     </button>
-                    <button type="button" onclick="showSection('contact', this)" class="nav-btn">
-                        <i class="fa-regular fa-paper-plane"></i><span>Contact</span>
-                    </button>
+
                 </div>
             </nav>
+
+            <!-- ABOUT -->
             <section id="about" class="section" aria-labelledby="about-heading">
                 <div class="glass-card section-panel space-y-6">
+
                     <h2 class="section-heading" id="about-heading">About Me</h2>
                     <div class="heading-line"></div>
+
                     <p class="muted-copy mb-4">
                         Hi! I'm a Student Athlete and an IT student balancing school and training.
                         It's challenging, but I stay committed both my studies and my sport.
-                        Learning technology and problem-solving in IT, along with athletic journey, has taught me
-                        discipline, time management, and perseverance.
-                    </p>
-                    <p class="muted-copy">
-                        Currently, I'm focusing on improving my skills in IT while keeping up with my training schedule.
-                        I'm learning to manage my time better, take on new challenges, and grow both academically and
-                        athletically.
+                        Learning technology and problem-solving in IT, along with athletic journey,
+                        has taught me discipline, time management, and perseverance.
                     </p>
 
-                    <h2 class="subheading mt-8">Skills & Strengths</h2>
+                    <p class="muted-copy">
+                        Currently, I'm focusing on improving my skills in IT while keeping up with
+                        my training schedule. I'm learning to manage my time better, take on new
+                        challenges, and grow both academically and athletically.
+                    </p>
+
+                    <h2 class="subheading mt-8">Skills &amp; Strengths</h2>
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+
                         <div class="skill-card p-5 break-words">
-                            <div class="skill-icon mb-4"><i class="fa-solid fa-code"></i></div>
-                            <h3 class="text-lg font-bold text-gray-800 mb-2">Basic Programming</h3>
+                            <div class="skill-icon mb-4">
+                                <i class="fa-solid fa-code"></i>
+                            </div>
+
+                            <h3 class="text-lg font-bold text-gray-800 mb-2">
+                                Basic Programming
+                            </h3>
+
                             <p class="text-sm text-gray-600">
-                                I understand the fundamentals of coding and can create simple programs.
-                                I’m continuously learning how to solve problems using code.
+                                I understand the fundamentals of coding and can create simple
+                                programs. I’m continuously learning how to solve problems using code.
                             </p>
                         </div>
 
                         <div class="skill-card p-5 break-words">
-                            <div class="skill-icon mb-4"><i class="fa-solid fa-laptop-code"></i></div>
-                            <h3 class="text-lg font-bold text-gray-800 mb-2">Basic Web Development</h3>
+                            <div class="skill-icon mb-4">
+                                <i class="fa-solid fa-laptop-code"></i>
+                            </div>
+
+                            <h3 class="text-lg font-bold text-gray-800 mb-2">
+                                Basic Web Development
+                            </h3>
+
                             <p class="text-sm text-gray-600">
                                 I can build simple and responsive websites using HTML and CSS,
                                 and I’m improving my skills in designing clean and user-friendly pages.
                             </p>
                         </div>
+
                     </div>
                 </div>
             </section>
 
             <section id="cv" class="section" hidden>
                 <div class="glass-card section-panel space-y-6">
+
                     <h2 class="section-heading">Curriculum Vitae</h2>
                     <div class="heading-line"></div>
+
                     <h3 class="subheading mb-3">Personal Profile</h3>
+
                     <div class="text-sm text-gray-700">
-                        <p class="profile-row"><strong>Date of Birth</strong><span>October 02, 2006</span></p>
-                        <p class="profile-row"><strong>Place of Birth</strong><span>Maunong, Calamba Laguna</span></p>
-                        <p class="profile-row"><strong>Citizenship</strong><span>Filipino</span></p>
-                        <p class="profile-row"><strong>Sex</strong><span>Female</span></p>
-                        <p class="profile-row"><strong>Age</strong><span>19</span></p>
-                        <p class="profile-row"><strong>Civil Status</strong><span>Single</span></p>
-                        <p class="profile-row"><strong>Religion</strong><span>Roman Catholic</span></p>
-                        <p class="profile-row"><strong>Father’s Name</strong><span>Rolando A. Lachica</span></p>
-                        <p class="profile-row"><strong>Mother’s Name</strong><span>Lucita S. Lachica</span></p>
+
+                        <p class="profile-row">
+                            <strong>Date of Birth</strong>
+                            <span>October 02, 2006</span>
+                        </p>
+
+                        <p class="profile-row">
+                            <strong>Place of Birth</strong>
+                            <span>Maunong, Calamba Laguna</span>
+                        </p>
+
+                        <p class="profile-row">
+                            <strong>Citizenship</strong>
+                            <span>Filipino</span>
+                        </p>
+
+                        <p class="profile-row">
+                            <strong>Sex</strong>
+                            <span>Female</span>
+                        </p>
+
+                        <p class="profile-row">
+                            <strong>Age</strong>
+                            <span>19</span>
+                        </p>
+
+                        <p class="profile-row">
+                            <strong>Civil Status</strong>
+                            <span>Single</span>
+                        </p>
+
+                        <p class="profile-row">
+                            <strong>Religion</strong>
+                            <span>Roman Catholic</span>
+                        </p>
+
+                        <p class="profile-row">
+                            <strong>Father’s Name</strong>
+                            <span>Rolando A. Lachica</span>
+                        </p>
+
+                        <p class="profile-row">
+                            <strong>Mother’s Name</strong>
+                            <span>Lucita S. Lachica</span>
+                        </p>
+
                     </div>
 
                     <h3 class="subheading mt-7 mb-3">Educational Background</h3>
+
                     <div class="text-sm text-gray-700">
-                        <p class="profile-row"><strong>College</strong><span>Polytechnic University of the Philippines,
-                                Barangay Poblacion 2, Sto. Tomas Batangas (2024 - 2027)</span></p>
-                        <p class="profile-row"><strong>Senior High School</strong><span>Saint Benilde International
-                                School, Opulencia Compound, Calamba Laguna (2022 - 2024)</span></p>
-                        <p class="profile-row"><strong>High School</strong><span>John-David Christian School, Barangay
-                                Saimsim, Calamba Laguna (2018 - 2022)</span></p>
-                        <p class="profile-row"><strong>Elementary School</strong><span>Maunong Elementary School,
-                                Barangay Maunong, Calamba Laguna (2012 - 2018)</span></p>
-                        <p class="profile-row"><strong>Pre-school</strong><span>Maunong Day Care Center, Barangay
-                                Maunong, Calamba Laguna (2011 - 2012)</span></p>
+
+                        <p class="profile-row">
+                            <strong>College</strong>
+                            <span>
+                                Polytechnic University of the Philippines,
+                                Barangay Poblacion 2, Sto. Tomas Batangas (2024 - 2027)
+                            </span>
+                        </p>
+
+                        <p class="profile-row">
+                            <strong>Senior High School</strong>
+                            <span>
+                                Saint Benilde International School,
+                                Opulencia Compound, Calamba Laguna (2022 - 2024)
+                            </span>
+                        </p>
+
+                        <p class="profile-row">
+                            <strong>High School</strong>
+                            <span>
+                                John-David Christian School,
+                                Barangay Saimsim, Calamba Laguna (2018 - 2022)
+                            </span>
+                        </p>
+
+                        <p class="profile-row">
+                            <strong>Elementary School</strong>
+                            <span>
+                                Maunong Elementary School,
+                                Barangay Maunong, Calamba Laguna (2012 - 2018)
+                            </span>
+                        </p>
+
+                        <p class="profile-row">
+                            <strong>Pre-school</strong>
+                            <span>
+                                Maunong Day Care Center,
+                                Barangay Maunong, Calamba Laguna (2011 - 2012)
+                            </span>
+                        </p>
+
                     </div>
 
                     <div class="mt-6">
-                        <a href="https://i.pinimg.com/1200x/d5/de/e9/d5dee9c6eb655ec7509c56b89a5da5fc.jpg"
-                            target="_blank" class="primary-link">
-                            <i class="fa-regular fa-eye"></i> Click to View CV
+                        <a
+                            href="https://i.pinimg.com/1200x/d5/de/e9/d5dee9c6eb655ec7509c56b89a5da5fc.jpg"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="primary-link">
+                            <i class="fa-regular fa-eye"></i>
+                            Click to View CV
                         </a>
                     </div>
+
                 </div>
             </section>
 
             <section id="portfolio" class="section" hidden>
                 <div class="glass-card section-panel">
-                    <h2 class="section-heading">My Portfolio</h2>
+
+                    <h2 class="section-heading">KINA</h2>
                     <div class="heading-line"></div>
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                         <div class="project-card p-6 flex flex-col justify-between gap-4">
-                            <div class="project-icon"><i class="fa-solid fa-bag-shopping"></i></div>
-                            <h3 class="font-semibold text-lg mb-3">Samsung Shop</h3>
-                            <a href="A02/index.html" class="primary-link self-start mt-auto"><i
-                                    class="fa-solid fa-arrow-up-right-from-square"></i> View Project</a>
+
+                            <div class="project-icon">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                            </div>
+
+                            <h3 class="font-semibold text-lg mb-3">
+                                Samsung Shop
+                            </h3>
+
+                            <a href="A02/index.html"
+                                class="primary-link self-start mt-auto">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                View Project
+                            </a>
 
                         </div>
 
                         <div class="project-card p-6 flex flex-col justify-between gap-4">
-                            <div class="project-icon"><i class="fa-solid fa-dragon"></i></div>
-                            <h3 class="font-semibold text-lg mb-3">Dragon Ball API</h3>
-                            <a href="Midterms/index.html" class="primary-link self-start mt-auto"><i
-                                    class="fa-solid fa-arrow-up-right-from-square"></i> View Project</a>
+
+                            <div class="project-icon">
+                                <i class="fa-solid fa-dragon"></i>
+                            </div>
+
+                            <h3 class="font-semibold text-lg mb-3">
+                                Dragon Ball API
+                            </h3>
+
+                            <a href="Midterms/index.html"
+                                class="primary-link self-start mt-auto">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                View Project
+                            </a>
+
                         </div>
+
                     </div>
                 </div>
             </section>
 
             <section id="contact" class="section" hidden>
                 <div class="glass-card section-panel">
+
                     <h2 class="section-heading">Get in Touch</h2>
                     <div class="heading-line"></div>
-                    <p class="text-gray-600 mb-4">Feel free to reach out!</p>
+
+                    <p class="text-gray-600 mb-4">
+                        Feel free to reach out!
+                    </p>
+
                     <div class="space-y-4 text-gray-700 text-sm">
 
-                        <p class="contact-detail"><span class="contact-icon"><i
-                                    class="fa-solid fa-envelope"></i></span><a
-                                href="mailto:akhennalachica02@gmail.com">akhennalachica02@gmail.com</a></p>
+                        <p class="contact-detail">
+                            <span class="contact-icon">
+                                <i class="fa-solid fa-envelope"></i>
+                            </span>
+                            <a href="mailto:akhennalachica02@gmail.com">
+                                akhennalachica02@gmail.com
+                            </a>
+                        </p>
 
-                        <p class="contact-detail"><span class="contact-icon"><i
-                                    class="fa-solid fa-phone"></i></span><span>secret no clue</span></p>
+                        <p class="contact-detail">
+                            <span class="contact-icon">
+                                <i class="fa-solid fa-phone"></i>
+                            </span>
+                            <span>secret no clue</span>
+                        </p>
 
-                        <p class="contact-detail"><span class="contact-icon"><i
-                                    class="fa-solid fa-location-dot"></i></span><span>Calamba, Laguna</span></p>
+                        <p class="contact-detail">
+                            <span class="contact-icon">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </span>
+                            <span>Calamba, Laguna</span>
+                        </p>
 
                     </div>
                 </div>
             </section>
+
         </main>
     </div>
 
@@ -711,7 +984,9 @@
             const buttons = document.querySelectorAll('.nav-btn');
             const targetSection = document.getElementById(sectionId);
 
-            if (!targetSection || !targetSection.classList.contains('section')) return;
+            if (!targetSection || !targetSection.classList.contains('section')) {
+                return;
+            }
 
             sections.forEach(section => {
                 section.hidden = section.id !== sectionId;
@@ -722,9 +997,12 @@
                 button.removeAttribute('aria-current');
             });
 
-            const activeButton = clickedButton || Array.from(buttons).find(button =>
-                button.getAttribute('onclick')?.includes("showSection('" + sectionId + "'")
-            );
+            const activeButton = clickedButton ||
+                Array.from(buttons).find(button =>
+                    button.getAttribute('onclick')?.includes(
+                        "showSection('" + sectionId + "'"
+                    )
+                );
 
             if (activeButton) {
                 activeButton.classList.add('active');
@@ -737,9 +1015,15 @@
         }
 
         function loadSectionFromHash() {
-            const requestedSection = window.location.hash.replace('#', '');
+            const requestedSection = window.location.hash.slice(1);
             const validSection = document.getElementById(requestedSection);
-            showSection(validSection && validSection.classList.contains('section') ? requestedSection : 'about', null, false);
+
+            const sectionId =
+                validSection && validSection.classList.contains('section')
+                    ? requestedSection
+                    : 'about';
+
+            showSection(sectionId, null, false);
         }
 
         window.addEventListener('DOMContentLoaded', loadSectionFromHash);
@@ -747,5 +1031,4 @@
     </script>
 
 </body>
-
 </html>
