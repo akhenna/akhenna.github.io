@@ -5,7 +5,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Portfolio</title>
-    <link rel="icon" type="image/png" href="https://i.pinimg.com/originals/3b/f1/97/3bf197d2c0e59325aacf38d6d980df6f.png">
+
+    <link rel="icon" type="image/png"
+        href="https://i.pinimg.com/originals/3b/f1/97/3bf197d2c0e59325aacf38d6d980df6f.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
@@ -27,9 +29,13 @@
             --border: rgba(118, 70, 153, 0.13);
         }
 
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
 
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             margin: 0;
@@ -43,9 +49,14 @@
             background-attachment: fixed;
         }
 
-        button, a { -webkit-tap-highlight-color: transparent; }
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
 
-        a { overflow-wrap: anywhere; }
+        a {
+            overflow-wrap: anywhere;
+        }
 
         .portfolio-layout {
             width: min(1180px, 100%);
@@ -80,11 +91,11 @@
             position: absolute;
             width: 150px;
             height: 150px;
-            border: 1px solid rgba(255,255,255,.25);
+            border: 1px solid rgba(255, 255, 255, .25);
             border-radius: 50%;
             right: -25px;
             top: -65px;
-            box-shadow: 0 0 0 18px rgba(255,255,255,.06), 0 0 0 38px rgba(255,255,255,.04);
+            box-shadow: 0 0 0 18px rgba(255, 255, 255, .06), 0 0 0 38px rgba(255, 255, 255, .04);
         }
 
         .profile-photo {
@@ -141,9 +152,13 @@
             color: var(--purple-700);
         }
 
-        .contact-detail p { overflow-wrap: anywhere; }
+        .contact-detail p {
+            overflow-wrap: anywhere;
+        }
 
-        .main-column { min-width: 0; }
+        .main-column {
+            min-width: 0;
+        }
 
         .site-nav {
             display: flex;
@@ -151,7 +166,7 @@
             justify-content: space-between;
             gap: 8px;
             padding: 10px;
-            position: sticky;
+            position: stiky;
             top: 16px;
             z-index: 20;
         }
@@ -213,15 +228,31 @@
             box-shadow: 0 7px 16px rgba(91, 33, 132, .2);
         }
 
-        .section { animation: sectionIn .32s ease both; }
-        .section[hidden] { display: none !important; }
-
-        @keyframes sectionIn {
-            from { opacity: 0; transform: translateY(7px); }
-            to { opacity: 1; transform: translateY(0); }
+        .section {
+            animation: sectionIn .32s ease both;
         }
 
-        .section-panel { padding: clamp(20px, 4vw, 38px); }
+        .section[hidden] {
+            display: none !important;
+        }
+
+        @keyframes sectionIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(7px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        .section-panel {
+            padding: clamp(20px, 4vw, 38px);
+        }
 
         .section-heading {
             color: var(--purple-900);
@@ -240,20 +271,28 @@
             margin-bottom: 22px;
         }
 
-        .skill-card, .project-card {
+        .skill-card,
+        .project-card {
+
             border: 1px solid var(--border);
             border-radius: 19px;
-            background: rgba(255,255,255,.82);
+
+            background: rgba(255, 255, 255, .82);
+
             transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
         }
 
-        .skill-card:hover, .project-card:hover {
+        .skill-card:hover,
+        .project-card:hover {
+
             transform: translateY(-4px);
             border-color: rgba(139, 69, 181, .3);
             box-shadow: 0 13px 28px rgba(72, 29, 101, .09);
         }
 
-        .skill-icon, .project-icon {
+        .skill-icon,
+        .project-icon {
+
             display: grid;
             place-items: center;
             width: 44px;
@@ -279,9 +318,18 @@
             font-size: .9rem;
         }
 
-        .profile-row:last-child { border-bottom: 0; }
-        .profile-row strong { color: #5c4d68; }
-        .profile-row span { color: #776b81; overflow-wrap: anywhere; }
+        .profile-row:last-child {
+            border-bottom: 0;
+        }
+
+        .profile-row strong {
+            color: #5c4d68;
+        }
+
+        .profile-row span {
+            color: #776b81;
+            overflow-wrap: anywhere;
+        }
 
         .primary-link {
             display: inline-flex;
@@ -304,29 +352,87 @@
             box-shadow: 0 10px 22px rgba(91, 33, 132, .25);
         }
 
-        .muted-copy { color: var(--muted); line-height: 1.85; }
-        .footer-note { color: #9586a1; font-size: .75rem; text-align: center; padding: 8px 0 2px; }
+        .muted-copy {
+            color: var(--muted);
+            line-height: 1.85;
+        }
+
+        .footer-note {
+            color: #9586a1;
+            font-size: .75rem;
+            text-align: center;
+            padding: 8px 0 2px;
+        }
 
         @media (max-width: 900px) {
-            .portfolio-layout { gap: 20px; }
-            .profile-card { position: static; }
-            .site-nav { position: static; }
-            .nav-brand { padding-inline: 8px; }
-            .nav-btn { padding: 10px 11px; }
+            .portfolio-layout {
+                gap: 20px;
+            }
+
+            .profile-card {
+                position: static;
+            }
+
+            .site-nav {
+                position: fixed;
+                top: auto;
+                bottom: 16px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: min(calc(100% - 32px), 760px);
+                z-index: 1000;
+            }
+
+            body {
+                padding-bottom: 100px;
+            }
+
+            .nav-brand {
+                padding-inline: 8px;
+            }
+
+            .nav-btn {
+                padding: 10px 11px;
+            }
         }
 
         @media (max-width: 640px) {
-            body { background-attachment: scroll; }
-            .portfolio-layout { gap: 16px; }
-            .profile-card { padding: 24px !important; }
-            .profile-banner { margin: -24px -24px 0; height: 86px; }
-            .profile-photo { width: 108px; height: 108px; margin-top: -54px; border-radius: 25px; }
+
+            body {
+                background-attachment: scroll;
+            }
+
+            .portfolio-layout {
+                gap: 16px;
+            }
+
+            .profile-card {
+                padding: 24px !important;
+            }
+
+            .profile-banner {
+                margin: -24px -24px 0;
+                height: 86px;
+            }
+
+            .profile-photo {
+                width: 108px;
+                height: 108px;
+                margin-top: -54px;
+                border-radius: 25px;
+            }
+
             .site-nav {
                 display: block;
                 padding: 12px;
                 border-radius: 20px;
             }
-            .nav-brand { justify-content: center; padding: 4px 4px 12px; }
+
+            .nav-brand {
+                justify-content: center;
+                padding: 4px 4px 12px;
+            }
+
             .nav-links {
                 display: grid;
                 grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -341,24 +447,66 @@
                 font-size: .69rem;
                 white-space: normal;
             }
-            .nav-btn i { font-size: 1rem; }
-            .section-panel { padding: 22px !important; }
-            .section-heading { font-size: 1.55rem; }
-            .profile-row { grid-template-columns: 1fr; gap: 4px; }
-            .contact-detail { gap: 10px; }
-            .contact-icon { flex-basis: 32px; width: 32px; height: 32px; }
-            .primary-link { width: 100%; }
+
+            .nav-btn i {
+                font-size: 1rem;
+            }
+
+            .section-panel {
+                padding: 22px !important;
+            }
+
+            .section-heading {
+                font-size: 1.55rem;
+            }
+
+            .profile-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+
+            .contact-detail {
+                gap: 10px;
+            }
+
+            .contact-icon {
+                flex-basis: 32px;
+                width: 32px;
+                height: 32px;
+            }
+
+            .primary-link {
+                width: 100%;
+            }
+
         }
 
         @media (max-width: 360px) {
-            body { padding: 12px !important; }
-            .nav-btn { font-size: .62rem; }
-            .nav-btn i { font-size: .9rem; }
-            .section-panel { padding: 17px !important; }
+
+            body {
+                padding: 12px 12px 110px !important;
+            }
+
+            .nav-btn {
+                font-size: .62rem;
+            }
+
+            .nav-btn i {
+                font-size: .9rem;
+            }
+
+            .section-panel {
+                padding: 17px !important;
+            }
+
         }
 
         @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
+
+            *,
+            *::before,
+            *::after {
+
                 scroll-behavior: auto !important;
                 animation-duration: .01ms !important;
                 transition-duration: .01ms !important;
@@ -379,8 +527,8 @@
 
                 <h1 class="text-xl md:text-2xl font-bold text-purple-900 leading-tight">Akhenna Siman Lachica</h1>
 
-                <p
-                    class="role-pill mt-3">
+                <p class="role-pill mt-3">
+
                     Student Athlete
                 </p>
 
@@ -409,15 +557,15 @@
                 </div>
             </div>
         </aside>
-
         <main class="main-column md:col-span-8 lg:col-span-9 space-y-6">
-
             <nav class="glass-card site-nav" aria-label="Main navigation">
                 <div class="nav-brand">
-            
                 </div>
                 <div class="nav-links">
-                    <button type="button" onclick="showSection('about', this)" class="nav-btn active" aria-current="page">
+
+                    <button type="button" onclick="showSection('about', this)" class="nav-btn active"
+                        aria-current="page">
+
                         <i class="fa-regular fa-user"></i><span>About</span>
                     </button>
                     <button type="button" onclick="showSection('cv', this)" class="nav-btn">
@@ -431,7 +579,6 @@
                     </button>
                 </div>
             </nav>
-
             <section id="about" class="section" aria-labelledby="about-heading">
                 <div class="glass-card section-panel space-y-6">
                     <h2 class="section-heading" id="about-heading">About Me</h2>
@@ -475,7 +622,6 @@
                 <div class="glass-card section-panel space-y-6">
                     <h2 class="section-heading">Curriculum Vitae</h2>
                     <div class="heading-line"></div>
-
                     <h3 class="subheading mb-3">Personal Profile</h3>
                     <div class="text-sm text-gray-700">
                         <p class="profile-row"><strong>Date of Birth</strong><span>October 02, 2006</span></p>
@@ -491,17 +637,21 @@
 
                     <h3 class="subheading mt-7 mb-3">Educational Background</h3>
                     <div class="text-sm text-gray-700">
-                        <p class="profile-row"><strong>College</strong><span>Polytechnic University of the Philippines, Barangay Poblacion 2, Sto. Tomas Batangas (2024 - 2027)</span></p>
-                        <p class="profile-row"><strong>Senior High School</strong><span>Saint Benilde International School, Opulencia Compound, Calamba Laguna (2022 - 2024)</span></p>
-                        <p class="profile-row"><strong>High School</strong><span>John-David Christian School, Barangay Saimsim, Calamba Laguna (2018 - 2022)</span></p>
-                        <p class="profile-row"><strong>Elementary School</strong><span>Maunong Elementary School, Barangay Maunong, Calamba Laguna (2012 - 2018)</span></p>
-                        <p class="profile-row"><strong>Pre-school</strong><span>Maunong Day Care Center, Barangay Maunong, Calamba Laguna (2011 - 2012)</span></p>
+                        <p class="profile-row"><strong>College</strong><span>Polytechnic University of the Philippines,
+                                Barangay Poblacion 2, Sto. Tomas Batangas (2024 - 2027)</span></p>
+                        <p class="profile-row"><strong>Senior High School</strong><span>Saint Benilde International
+                                School, Opulencia Compound, Calamba Laguna (2022 - 2024)</span></p>
+                        <p class="profile-row"><strong>High School</strong><span>John-David Christian School, Barangay
+                                Saimsim, Calamba Laguna (2018 - 2022)</span></p>
+                        <p class="profile-row"><strong>Elementary School</strong><span>Maunong Elementary School,
+                                Barangay Maunong, Calamba Laguna (2012 - 2018)</span></p>
+                        <p class="profile-row"><strong>Pre-school</strong><span>Maunong Day Care Center, Barangay
+                                Maunong, Calamba Laguna (2011 - 2012)</span></p>
                     </div>
 
                     <div class="mt-6">
                         <a href="https://i.pinimg.com/1200x/d5/de/e9/d5dee9c6eb655ec7509c56b89a5da5fc.jpg"
-                            target="_blank"
-                            class="primary-link">
+                            target="_blank" class="primary-link">
                             <i class="fa-regular fa-eye"></i> Click to View CV
                         </a>
                     </div>
@@ -517,17 +667,17 @@
                         <div class="project-card p-6 flex flex-col justify-between gap-4">
                             <div class="project-icon"><i class="fa-solid fa-bag-shopping"></i></div>
                             <h3 class="font-semibold text-lg mb-3">Samsung Shop</h3>
-                            <a href="A02/index.html"
-                                class="primary-link self-start mt-auto"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Project</a>
+                            <a href="A02/index.html" class="primary-link self-start mt-auto"><i
+                                    class="fa-solid fa-arrow-up-right-from-square"></i> View Project</a>
+
                         </div>
 
                         <div class="project-card p-6 flex flex-col justify-between gap-4">
                             <div class="project-icon"><i class="fa-solid fa-dragon"></i></div>
                             <h3 class="font-semibold text-lg mb-3">Dragon Ball API</h3>
-                           <a href="Midterms/index.html"
-                                class="primary-link self-start mt-auto"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Project</a>
+                            <a href="Midterms/index.html" class="primary-link self-start mt-auto"><i
+                                    class="fa-solid fa-arrow-up-right-from-square"></i> View Project</a>
                         </div>
-
                     </div>
                 </div>
             </section>
@@ -538,13 +688,20 @@
                     <div class="heading-line"></div>
                     <p class="text-gray-600 mb-4">Feel free to reach out!</p>
                     <div class="space-y-4 text-gray-700 text-sm">
-                        <p class="contact-detail"><span class="contact-icon"><i class="fa-solid fa-envelope"></i></span><a href="mailto:akhennalachica02@gmail.com">akhennalachica02@gmail.com</a></p>
-                        <p class="contact-detail"><span class="contact-icon"><i class="fa-solid fa-phone"></i></span><span>secret no clue</span></p>
-                        <p class="contact-detail"><span class="contact-icon"><i class="fa-solid fa-location-dot"></i></span><span>Calamba, Laguna</span></p>
+
+                        <p class="contact-detail"><span class="contact-icon"><i
+                                    class="fa-solid fa-envelope"></i></span><a
+                                href="mailto:akhennalachica02@gmail.com">akhennalachica02@gmail.com</a></p>
+
+                        <p class="contact-detail"><span class="contact-icon"><i
+                                    class="fa-solid fa-phone"></i></span><span>secret no clue</span></p>
+
+                        <p class="contact-detail"><span class="contact-icon"><i
+                                    class="fa-solid fa-location-dot"></i></span><span>Calamba, Laguna</span></p>
+
                     </div>
                 </div>
             </section>
-
         </main>
     </div>
 
